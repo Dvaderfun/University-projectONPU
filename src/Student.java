@@ -62,14 +62,14 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public class IncorrectStudentIdException extends RuntimeException {
-        public IncorrectStudentIdException(String message) {
+    class IncorrectStudentIdException extends RuntimeException {
+        IncorrectStudentIdException(String message) {
             super(message);
         }
     }
 
-    public class IncorrectNameException extends RuntimeException {
-        public IncorrectNameException(String message) {
+    class IncorrectNameException extends RuntimeException {
+        IncorrectNameException(String message) {
             super(message);
         }
     }
