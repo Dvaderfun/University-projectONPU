@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.*;
 
 public class Olympiad implements Event{
@@ -24,7 +26,7 @@ public class Olympiad implements Event{
     public void setCity(String city) {
         this.city = city;
 
-        if (city.isEmpty())
+        if (StringUtils.isEmpty(city))
             throw new Olympiad.IncorrectNameCity("Empty name of city");
     }
 

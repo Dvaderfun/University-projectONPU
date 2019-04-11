@@ -1,4 +1,6 @@
 import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
 
@@ -82,6 +84,29 @@ public class Group {
     }
 
 
+    public void sortStudent(Student[] students) {
+
+        Arrays.sort(students, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                String surname1 = ((Student) o1).getLastName();
+                String surname2 = ((Student) o2).getLastName();
+                int sComp = surname1.compareTo(surname2);
+
+                if (sComp != 0) {
+                    return sComp;
+                }
+
+                String name1 = ((Student) o1).getFirstName();
+                String name2 = ((Student) o2).getFirstName();
+                return name1.compareTo(name2);
+
+            }
+        });
+
+//        return students;
+    }
 }
 
 
