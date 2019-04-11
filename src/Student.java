@@ -24,18 +24,12 @@ public class Student {
     }
 
     public Student(String firstName, String lastName, int studentId) {
+        this(firstName, lastName);
+
         if (!isIdTrue(studentId))
             throw new IncorrectDataException("Incorrect ID number");
 
-        if (StringUtils.isEmpty(firstName))
-            throw new IncorrectDataException("Empty name");
-
-        if (StringUtils.isEmpty(lastName))
-            throw new IncorrectDataException("Empty surname");
-
         this.studentId = studentId;
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public String getFirstName() {
