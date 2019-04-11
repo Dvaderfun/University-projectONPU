@@ -1,5 +1,8 @@
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDateTime;
+
+
 public class Student {
     private String firstName;
     private String lastName;
@@ -9,87 +12,92 @@ public class Student {
     public static int STUDENT_ID_DEFAULT = 0;
 
     public Student(String firstName, String lastName) {
+        if (StringUtils.isEmpty(firstName))
+            throw new IncorrectDataException("Empty name");
 
+        if (StringUtils.isEmpty(lastName))
+            throw new IncorrectDataException("Empty surname");
+
+        this.studentId = STUDENT_ID_DEFAULT;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.studentId = STUDENT_ID_DEFAULT;
     }
 
     public Student(String firstName, String lastName, int studentId) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-        if (!isIdTrue(studentId)) {
-            throw new IncorrectStudentIdException("Incorrect ID number");
-        } else {
-            this.studentId = studentId;
-        }
+        if (!isIdTrue(studentId))
+            throw new IncorrectDataException("Incorrect ID number");
 
         if (StringUtils.isEmpty(firstName))
-            throw new IncorrectNameException("Empty name");
+            throw new IncorrectDataException("Empty name");
 
         if (StringUtils.isEmpty(lastName))
-            throw new IncorrectNameException("Empty surname");
+            throw new IncorrectDataException("Empty surname");
 
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public int getYear() {
-        //TODO проверка на некорректный ввод
         return year;
     }
 
     public void setFirstName(String firstName) {
+        if (StringUtils.isEmpty(firstName))
+            throw new IncorrectDataException("Empty name");
+
         this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
+        if (StringUtils.isEmpty(lastName))
+            throw new IncorrectDataException("Empty surname");
+
         this.lastName = lastName;
     }
 
     public void setYear(int year) {
+        if (year < 0 || year > LocalDateTime.now().getYear())
+            throw new IncorrectDataException("Incorrect Year. Only >0 and <2019");
+
         this.year = year;
     }
 
     public int getStudentId() {
-        //TODO Тестануть всё что можно и если можно, то сделать удобный ексепшн чтоб в коде меньше херни было
         return studentId;
     }
 
     public void setStudentId(int studentId) {
         if (!isIdTrue(studentId)) {
-            throw new IncorrectStudentIdException("Incorrect ID number");
-        } else {
-            this.studentId = studentId;
+            throw new IncorrectDataException("Incorrect ID number. Only 6-digit");
         }
+
+        this.studentId = studentId;
+
     }
 
-    public boolean isIdTrue(int studentId){
+    public boolean isIdTrue(int studentId) {
         return Math.ceil(Math.log10(studentId)) == 6 || studentId > 0;
     }
 
-    static class IncorrectStudentIdException extends RuntimeException {
-        IncorrectStudentIdException(String message) {
+    static class IncorrectDataException extends RuntimeException {
+        IncorrectDataException(String message) {
             super(message);
         }
-    }
 
-    static class IncorrectNameException extends RuntimeException {
-        IncorrectNameException(String message) {
-            super(message);
+
+        @Override
+        public String toString() {
+            //TODO
+            return null;
         }
     }
-
-    @Override
-    public String toString() {
-        //TODO
-        return null;
-}
-
 }
