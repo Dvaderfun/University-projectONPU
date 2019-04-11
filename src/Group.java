@@ -3,8 +3,8 @@ import java.lang.reflect.Array;
 public class Group {
 
     private int groupId;
+    private Student student;
     private Student[] students;
-
 
     public Group(int groupId) {
         this.groupId = groupId;
@@ -57,6 +57,10 @@ public class Group {
 
 
     public boolean removeStudent(Student[] students, int studentId) {
+        if (!student.isIdTrue(studentId)) {
+            throw new Student.IncorrectStudentIdException("Incorrect ID number");
+        }
+
         int studentIndex = findStudentIndex(studentId);
 
         if (studentIndex != 0) {

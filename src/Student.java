@@ -20,8 +20,11 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        if (Math.ceil(Math.log10(studentId)) != 6 || studentId <= 0)
+        if (!isIdTrue(studentId)) {
             throw new IncorrectStudentIdException("Incorrect ID number");
+        } else {
+            this.studentId = studentId;
+        }
 
         if (StringUtils.isEmpty(firstName))
             throw new IncorrectNameException("Empty name");
@@ -62,13 +65,17 @@ public class Student {
         this.studentId = studentId;
     }
 
-    class IncorrectStudentIdException extends RuntimeException {
+    public boolean isIdTrue(int studentId){
+        return Math.ceil(Math.log10(studentId)) == 6 || studentId > 0;
+    }
+
+    static class IncorrectStudentIdException extends RuntimeException {
         IncorrectStudentIdException(String message) {
             super(message);
         }
     }
 
-    class IncorrectNameException extends RuntimeException {
+    static class IncorrectNameException extends RuntimeException {
         IncorrectNameException(String message) {
             super(message);
         }
