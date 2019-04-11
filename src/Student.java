@@ -9,7 +9,7 @@ public class Student {
     private int year;
     private int studentId;
 
-    public static int STUDENT_ID_DEFAULT = 0;
+    private final static int STUDENT_ID_DEFAULT = 0;
 
     public Student(String firstName, String lastName) {
         if (StringUtils.isEmpty(firstName))
