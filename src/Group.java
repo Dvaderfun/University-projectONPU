@@ -96,17 +96,17 @@ public class Group {
 
     public Student[] sortStudent(Student[] students) {
 
-        Arrays.sort(students, (Comparator<Student>) (Student s1, Student o2) -> {
-            String surname1 = ((Student) s1).getLastName();
-            String surname2 = ((Student) s1).getLastName();
+        Arrays.sort(students, (Comparator<Student>) (Student s1, Student s2) -> {
+            String surname1 = (s1).getLastName();
+            String surname2 = (s2).getLastName();
             int sComp = surname1.compareTo(surname2);
 
             if (sComp != 0) {
                 return sComp;
             }
 
-            String name1 = ((Student) s1).getFirstName();
-            String name2 = ((Student) o2).getFirstName();
+            String name1 = (s1).getFirstName();
+            String name2 = (s2).getFirstName();
             return name1.compareTo(name2);
 
         });
