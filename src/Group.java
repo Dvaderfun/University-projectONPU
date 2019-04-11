@@ -4,22 +4,32 @@ import java.util.Comparator;
 
 public class Group {
 
-    private int groupId;
     private Student student;
+    private int groupId;
     private Student[] students;
 
+    private final int DEFAULT_GROUP_ID = 1;
+
     public Group(int groupId) {
-        this.groupId = groupId;
-        this.students = new Student[0];
+        if (!isIdTrue(groupId)) {
+            throw new IncorrectDataException("Incorrect group Id. Pos. number expected");
+        } else {
+            this.groupId = groupId;
+            this.students = new Student[0];
+        }
     }
 
     public Group(int groupId, int numberOfStud) {
-        this.groupId = groupId;
+        this(groupId);
         this.students = new Student[numberOfStud];
+        if(numberOfStud < 0){
+            throw new IncorrectDataException("Negative number of student");
+        }
     }
 
     public Group(Student[] students) {
         this.students = students;
+        this.groupId = DEFAULT_GROUP_ID;
     }
 
     public int getGroupId() {
@@ -60,7 +70,7 @@ public class Group {
 
     public boolean removeStudent(Student[] students, int studentId) {
         if (!student.isIdTrue(studentId)) {
-            throw new Student.IncorrectStudentIdException("Incorrect ID number");
+            throw new Student.IncorrectDataException("Incorrect ID number");
         }
 
         int studentIndex = findStudentIndex(studentId);
@@ -77,36 +87,43 @@ public class Group {
     public void addStudent(Student[] students, Student newStudent) {
 
         Student[] newArray = (Student[]) Array.newInstance(students.getClass().getComponentType(),
-                            students.length + 1);
+                students.length + 1);
         System.arraycopy(students, 0, newArray, 0, students.length);
-        System.arraycopy(new Student[] {newStudent}, 0, newArray, students.length, 1);
+        System.arraycopy(new Student[]{newStudent}, 0, newArray, students.length, 1);
         this.students = newArray;
     }
 
 
-    public void sortStudent(Student[] students) {
+    public Student[] sortStudent(Student[] students) {
 
-        Arrays.sort(students, new Comparator() {
+        Arrays.sort(students, (Comparator<Student>) (Student s1, Student o2) -> {
+            String surname1 = ((Student) s1).getLastName();
+            String surname2 = ((Student) s1).getLastName();
+            int sComp = surname1.compareTo(surname2);
 
-            @Override
-            public int compare(Object o1, Object o2) {
-                String surname1 = ((Student) o1).getLastName();
-                String surname2 = ((Student) o2).getLastName();
-                int sComp = surname1.compareTo(surname2);
-
-                if (sComp != 0) {
-                    return sComp;
-                }
-
-                String name1 = ((Student) o1).getFirstName();
-                String name2 = ((Student) o2).getFirstName();
-                return name1.compareTo(name2);
-
+            if (sComp != 0) {
+                return sComp;
             }
+
+            String name1 = ((Student) s1).getFirstName();
+            String name2 = ((Student) o2).getFirstName();
+            return name1.compareTo(name2);
+
         });
 
-//        return students;
+        return students;
     }
+
+    public boolean isIdTrue(int GroupId) {
+        return (GroupId > 0);
+    }
+
+    static class IncorrectDataException extends RuntimeException {
+        IncorrectDataException(String message) {
+            super(message);
+        }
+    }
+
 }
 
 
