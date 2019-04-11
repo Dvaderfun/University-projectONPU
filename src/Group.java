@@ -21,10 +21,10 @@ public class Group {
 
     public Group(int groupId, int numberOfStud) {
         this(groupId);
-        this.students = new Student[numberOfStud];
         if(numberOfStud < 0){
-            throw new IncorrectDataException("Negative number of student");
+            throw new IncorrectDataException("Incorrect number of student");
         }
+        this.students = new Student[numberOfStud];
     }
 
     public Group(Student[] students) {
@@ -37,7 +37,11 @@ public class Group {
     }
 
     public void setGroupId(int groupId) {
-        this.groupId = groupId;
+        if(!isIdTrue(groupId)){
+            throw new IncorrectDataException("Incorrect group id");
+        }else{
+            this.groupId = groupId;
+        }
     }
 
     public int getNumOfStudents() {
@@ -49,6 +53,7 @@ public class Group {
     }
 
     public Student findStudent(int studentId) {
+
         for (Student s : students) {
             if (s.getStudentId() == studentId) {
                 return s;
@@ -58,7 +63,9 @@ public class Group {
     }
 
     private int findStudentIndex(int studentId) {
-
+        if (student.isIdTrue(studentId)) {
+            throw new Group.IncorrectDataException("Incorrect ID number");
+        }
         for (int i = 0; i < students.length; i++) {
             if (students[i].getStudentId() == studentId) {
                 return i;
@@ -97,16 +104,16 @@ public class Group {
     public Student[] sortStudent(Student[] students) {
 
         Arrays.sort(students, (Comparator<Student>) (Student s1, Student s2) -> {
-            String surname1 = (s1).getLastName();
-            String surname2 = (s2).getLastName();
+            String surname1 = s1.getLastName();
+            String surname2 = s2.getLastName();
             int sComp = surname1.compareTo(surname2);
 
             if (sComp != 0) {
                 return sComp;
             }
 
-            String name1 = (s1).getFirstName();
-            String name2 = (s2).getFirstName();
+            String name1 = s1.getFirstName();
+            String name2 = s2.getFirstName();
             return name1.compareTo(name2);
 
         });

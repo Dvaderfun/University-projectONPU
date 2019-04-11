@@ -79,7 +79,7 @@ public class Student {
     }
 
     public boolean isIdTrue(int studentId) {
-        return Math.ceil(Math.log10(studentId)) == 6 || studentId > 0;
+        return (Math.ceil(Math.log10(studentId)) == 6 && studentId > 0);
     }
 
     static class IncorrectDataException extends RuntimeException {
