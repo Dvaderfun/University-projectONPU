@@ -74,21 +74,21 @@ class GroupTest {
 
 
     @Test
-    @DisplayName("findStud неправ передача студ id")
-    void findStudentIncorrStudId() {
-        g = new Group(5);
-        assertThrows(Group.IncorrectDataException.class, () -> {
-            g.findStudent(45);
-        });
-        assertThrows(Group.IncorrectDataException.class, () -> {
-            g.findStudent(-445555);
-        });
-        assertThrows(Group.IncorrectDataException.class, () -> {
-            g.findStudent(000000);
-        });
+    @DisplayName("нахождение студента по id")
+    void findStudent() {
+        Student[] students = new Student[4];
+        Student leha = new Student("leha", "lesha", 123457);
+        students[0] = leha;
+        Student nobody = new Student("a", "a", 123456);
+        students[0] = leha;
+        students[1] = nobody;
+        g = new Group(students);
+        Student found = g.findStudent(123456);
+        assertSame(nobody, found);
+
 
     }
-    //Student s = new Student("s", "t", 444444)
+
     @Test
     void removeStudent() {
     }

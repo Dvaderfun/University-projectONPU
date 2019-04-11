@@ -53,7 +53,6 @@ public class Group {
     }
 
     public Student findStudent(int studentId) {
-
         for (Student s : students) {
             if (s.getStudentId() == studentId) {
                 return s;
@@ -63,9 +62,6 @@ public class Group {
     }
 
     private int findStudentIndex(int studentId) {
-        if (student.isIdTrue(studentId)) {
-            throw new Group.IncorrectDataException("Incorrect ID number");
-        }
         for (int i = 0; i < students.length; i++) {
             if (students[i].getStudentId() == studentId) {
                 return i;
