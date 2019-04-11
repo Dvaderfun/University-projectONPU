@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 public class Student {
     private String firstName;
     private String lastName;
@@ -21,10 +23,10 @@ public class Student {
         if (Math.ceil(Math.log10(studentId)) != 6 || studentId <= 0)
             throw new IncorrectStudentIdException("Incorrect ID number");
 
-        if (firstName.contains(""))
+        if (StringUtils.isEmpty(firstName))
             throw new IncorrectNameException("Empty name");
 
-        if (lastName.contains(""))
+        if (StringUtils.isEmpty(lastName))
             throw new IncorrectNameException("Empty surname");
 
     }
@@ -32,21 +34,19 @@ public class Student {
     public String getFirstName() {
         return firstName;
     }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getYear() {
+        return year;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public int getYear() {
-        return year;
     }
 
     public void setYear(int year) {
@@ -73,5 +73,11 @@ public class Student {
             super(message);
         }
     }
+
+    @Override
+    public String toString() {
+        //TODO
+        return null;
+}
 
 }
