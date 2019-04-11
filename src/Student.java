@@ -41,6 +41,7 @@ public class Student {
         return lastName;
     }
     public int getYear() {
+        //TODO проверка на некорректный ввод
         return year;
     }
 
@@ -62,7 +63,11 @@ public class Student {
     }
 
     public void setStudentId(int studentId) {
-        this.studentId = studentId;
+        if (!isIdTrue(studentId)) {
+            throw new IncorrectStudentIdException("Incorrect ID number");
+        } else {
+            this.studentId = studentId;
+        }
     }
 
     public boolean isIdTrue(int studentId){
