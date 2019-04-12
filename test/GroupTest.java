@@ -83,7 +83,7 @@ class GroupTest {
         Student founded = g.findStudent(123456);
         assertSame(students[1], founded);
 
-        assertDoesNotThrow(()->{
+        assertDoesNotThrow(() -> {
             Student s = g.findStudent(888888);
             assertSame(students[3], s);
         });
@@ -107,16 +107,26 @@ class GroupTest {
     }
 
     @Test
+    @DisplayName("Сортировка с разными людьми")
     void sortStudent() {
         Student students[] = new Student[3];
         students[0] = new Student("Artyom", "Kazlanzhi");
-        students[1] = new Student("Daniil","Dermenzhy");
+        students[1] = new Student("Daniil", "Dermenzhy");
         students[2] = new Student("Alex", "Dermenzhy");
-        Group gr = new Group(students);
-        System.out.println(gr);
-        Group other = new Group(gr.sortStudent(gr.getStudents()));
-        System.out.println(other);
-        assertFalse(gr.toString() == other.toString());
+        Group group = new Group(students);
+        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        assertFalse(group.toString() == sortedGroup.toString());
+    }
 
+    @Test
+    @DisplayName("Сортировка одного человека в группе")
+    void sortStudentOnlyOne(){
+        Group group = new Group(1);
+        group.addStudent(new Student("Artyom","Kazlanzhi"));
+        System.out.println(group);
+        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        System.out.println(sortedGroup);
+        assertTrue(group.toString().equals(sortedGroup.toString()));
     }
 }
+
