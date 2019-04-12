@@ -1,3 +1,5 @@
+import exceptions.IncorrectDataException;
+
 import java.util.Date;
 
 public class Conference implements Event {
@@ -12,6 +14,10 @@ public class Conference implements Event {
 
     public void setArticleName(String articleName) {
         this.articleName = articleName;
+
+        if (articleName.trim().isEmpty()) {
+            throw new IncorrectDataException("Название доклада");
+        }
     }
 
     @Override

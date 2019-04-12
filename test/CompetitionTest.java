@@ -18,5 +18,6 @@ class CompetitionTest {
 
     @Test
     void setWinCash() {
+
     }
 }
