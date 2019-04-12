@@ -92,6 +92,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return null;
+        return this.lastName + " " + this.firstName;
     }
 }

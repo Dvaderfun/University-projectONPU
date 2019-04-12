@@ -112,6 +112,11 @@ class GroupTest {
         students[0] = new Student("Artyom", "Kazlanzhi");
         students[1] = new Student("Daniil","Dermenzhy");
         students[2] = new Student("Alex", "Dermenzhy");
-        assertNotEquals(g.sortStudent(students), students);
+        Group gr = new Group(students);
+        System.out.println(gr);
+        Group other = new Group(gr.sortStudent(gr.getStudents()));
+        System.out.println(other);
+        assertNotEquals(gr.toString(), other.toString());
+
     }
 }

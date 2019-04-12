@@ -118,7 +118,13 @@ public class Group {
         return (GroupId > 0);
     }
 
-
+    @Override
+    public String toString() {
+        return "Group{" +
+                "groupId=" + groupId +
+                ", students=" + Arrays.toString(students) +
+                '}';
+    }
 }
 
 
