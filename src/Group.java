@@ -1,4 +1,5 @@
 import exceptions.IncorrectDataException;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -33,7 +34,7 @@ public class Group {
     }
 
     public int getGroupId() {
-        return groupId;
+        return this.groupId;
     }
 
     public void setGroupId(int groupId) {
@@ -77,31 +78,20 @@ public class Group {
         return -1;
     }
 
-    public boolean removeStudent(Student[] students, int studentId) {
+    public void removeStudent(int studentId) {
         if (!Student.isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number");
         }
 
-        int studentIndex = findStudentIndex(studentId);
-        if (studentIndex == -1)
-            return false;
+        Student removingStudent = findStudent(studentId);
 
-        if (studentIndex != 0) {
-            System.arraycopy(students, studentIndex + 1, students, studentIndex,
-                    students.length - 1 - studentIndex);
-            this.students = students;
-            return true;
-        }
-        return false;
+        this.students = ArrayUtils.removeElement(this.students, removingStudent);
     }
 
-    public void addStudent(Student newStudent) {
+    public void addStudent(Student s) {
 
-        Student[] newArray = (Student[]) Array.newInstance(students.getClass().getComponentType(),
-                students.length + 1);
-        System.arraycopy(students, 0, newArray, 0, students.length);
-        System.arraycopy(new Student[]{newStudent}, 0, newArray, students.length, 1);
-        this.students = newArray;
+        this.students = ArrayUtils.add(this.students, s);
+
     }
 
     public Student[] sortStudent(Student[] students) {
