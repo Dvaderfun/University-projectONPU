@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GroupTest {
 
     private Group g;
-    private int groupId;
+
 
     @Test
     @DisplayName("констуктор только с id, nega")
@@ -31,23 +31,36 @@ class GroupTest {
         assertThrows(IncorrectDataException.class, () -> {
             g = new Group(0, -5);
         });
+    }
 
+    @Test
+    @DisplayName("Конструктор - negat groupId, negat - кол-во студентов")
+    void testConstr2_1() {
         assertThrows(IncorrectDataException.class, () -> {
             g = new Group(-5, -5);
         });
+    }
 
+    @Test
+    @DisplayName("Конструктор - negat groupId, кол-во студентов - 0")
+    void testConstr2_2() {
         assertThrows(IncorrectDataException.class, () -> {
             g = new Group(-3, 0);
         });
+    }
 
+    @Test
+    @DisplayName("Конструктор с корректными исходниками")
+    void testConstr2_3() {
         assertDoesNotThrow(() -> {
             g = new Group(5, 5);
         });
     }
 
+
     @Test
     @DisplayName("констуктор с готовыми студентами")
-    void testConstr3() {
+    void testConstrGettingStud() {
         g = new Group(5);
         assertDoesNotThrow(() -> {
             g = new Group(g.getStudents());
@@ -56,17 +69,25 @@ class GroupTest {
     }
 
     @Test
-    @DisplayName("Перезаписать id группы")
-    void setGroupId() {
+    @DisplayName("Перезаписать id на negat")
+    void setNegGroupId() {
         assertThrows(IncorrectDataException.class, () -> {
             g = new Group(4);
             g.setGroupId(-5);
-            g.setGroupId(0);
         });
-
     }
 
     @Test
+    @DisplayName("Перезаписать id группы на 0")
+    void setZeroGroupId() {
+        assertThrows(IncorrectDataException.class, () -> {
+            g = new Group(4);
+            g.setGroupId(0);
+        });
+    }
+
+    @Test
+    @DisplayName("Получение кол-ва студентов")
     void getNumOfStudents() {
         g = new Group(6, 0);
         assertEquals(0, g.getNumOfStudents());
@@ -87,7 +108,6 @@ class GroupTest {
             Student s = g.findStudent(888888);
             assertSame(students[3], s);
         });
-
     }
 
     @Test
@@ -115,7 +135,7 @@ class GroupTest {
         students[2] = new Student("Alex", "Dermenzhy");
         Group group = new Group(students);
         Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
-        assertFalse(group.toString() == sortedGroup.toString());
+        assertFalse(!group.toString().equals(sortedGroup.toString()));
     }
 
     @Test
