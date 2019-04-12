@@ -238,21 +238,20 @@ class GroupTest {
         Student s1 = new Student("Petya1", "Petrov1");
         Student s2 = new Student("Petya2", "Petrov2");
         Student s3 = new Student("Petya3", "Petrov3");
-        Student s4 = new Student("Petya4", "Petrov4");
+
         Olympiad o1 = new Olympiad();
         Olympiad o2 = new Olympiad();
         Olympiad o3 = new Olympiad();
         o1.setPodiumPlace(1);
         s1.addEvent(o1);
         o2.setPodiumPlace(3);
-        s3.addEvent(o2);
+        s2.addEvent(o2);
         o3.setPodiumPlace(4);
-        s4.addEvent(o3);
+        s3.addEvent(o3);
         g = new Group(1);
         g.addStudent(s1);
         g.addStudent(s2);
         g.addStudent(s3);
-        g.addStudent(s4);
         Student[] expectedWinners = new Student[2];
         expectedWinners[0] = s1;
         expectedWinners[1] = s2;
