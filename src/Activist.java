@@ -1,6 +1,6 @@
 public interface Activist {
     //возвращающий количество мероприятий, в которых участвовал студент;
-    int getEventNubmer();
+    int getEventNumber();
 
     //возвращающий число призовых мест, занятых на олимпиадах;
     int getPrizePlaceNumber();

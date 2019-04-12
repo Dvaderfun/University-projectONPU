@@ -1,14 +1,15 @@
 import exceptions.IncorrectDataException;
-import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
-public class Student {
+public class Student implements Activist{
     private String firstName;
     private String lastName;
     private int year;
     private int studentId;
+    private ArrayList<Event> arrayList;
 
     private final static int STUDENT_ID_DEFAULT = 0;
     private final static String STUDENT_NAME_DEFAULT = "noname";
@@ -20,15 +21,17 @@ public class Student {
     }
 
     public Student(String firstName, String lastName) {
-        if (StringUtils.isEmpty(firstName))
+        if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
-        if (StringUtils.isEmpty(lastName))
+        if (lastName.isEmpty())
             throw new IncorrectDataException("Empty surname");
 
         this.studentId = STUDENT_ID_DEFAULT;
         this.firstName = firstName;
         this.lastName = lastName;
+
+        arrayList = new ArrayList<>();
     }
 
     public Student(String firstName, String lastName, int studentId) {
@@ -53,14 +56,14 @@ public class Student {
     }
 
     public void setFirstName(String firstName) {
-        if (StringUtils.isEmpty(firstName))
+        if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
         this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        if (StringUtils.isEmpty(lastName))
+        if (lastName.isEmpty())
             throw new IncorrectDataException("Empty surname");
 
         this.lastName = lastName;
@@ -87,6 +90,75 @@ public class Student {
 
     public static boolean isIdTrue(int studentId) {
         return (Math.ceil(Math.log10(studentId)) == 6 && studentId > 0);
+    }
+
+    @Override
+    public int getEventNumber() {
+        return arrayList.size();
+    }
+
+    @Override
+    public int getPrizePlaceNumber() {
+        int i = 0;
+        for (Event event: arrayList) {
+            if (event instanceof Olympiad){
+                Olympiad olympiad = (Olympiad) event;
+                int olympiadPlace = olympiad.getPodiumPlace();
+
+                if (olympiadPlace == 1 || olympiadPlace == 2 || olympiadPlace == 3){
+                    i++;
+                }
+
+            }
+        }
+        return i;
+    }
+
+    //возвращающий число докладов на конференциях
+    @Override
+    public int getReportsNumber() {
+        int i = 0;
+        for (Event event: arrayList) {
+            if (event instanceof Conference){
+                Conference conference = (Conference) event;
+                String conferenceArticleName = conference.getArticleName();
+                if (!conferenceArticleName.isEmpty()){
+                    i++;
+                }
+
+            }
+        }
+        return i;
+    }
+    //строка состоит из названий проектов,
+    //за которые студент получил вознаграждение на соревнованиях.
+    @Override
+    public String getNameProjects() {
+        StringBuffer stringBuffer;
+        stringBuffer = new StringBuffer();
+
+        for (Event event: arrayList) {
+            if (event instanceof Competition){
+                Competition competition = (Competition) event;
+
+                String projectName = competition.getProjectName();
+                int winCash = competition.getWinCash();
+
+                if (!projectName.isEmpty() && winCash > 0){
+                    stringBuffer.append(projectName);
+                }
+
+            }
+        }
+        return stringBuffer.toString();
+    }
+
+    public void addEvent(Event e){
+        arrayList.add(e);
+    }
+
+    public Event getEvent(int index){
+        return arrayList.get(index);
     }
 
 
