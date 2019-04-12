@@ -92,14 +92,26 @@ class GroupTest {
 
     @Test
     void removeStudent() {
-        g.addStudent(new Student("test1", "fd", 123456));
+        Group gr = new Group(5, 3);
+        gr.addStudent(new Student("asd", "sdf", 332455));
+        assertEquals(4, gr.getNumOfStudents());
+        gr.removeStudent(332455);
+        assertEquals(3, gr.getNumOfStudents());
     }
 
     @Test
     void addStudent() {
+        Group gr = new Group(5, 3);
+        gr.addStudent(new Student("asd", "asdg", 332455));
+        assertEquals(4, gr.getNumOfStudents());
     }
 
     @Test
     void sortStudent() {
+        Student students[] = new Student[3];
+        students[0] = new Student("Artyom", "Kazlanzhi");
+        students[1] = new Student("Daniil","Dermenzhy");
+        students[2] = new Student("Alex", "Dermenzhy");
+        assertNotEquals(g.sortStudent(students), students);
     }
 }
