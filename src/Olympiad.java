@@ -1,3 +1,4 @@
+import exceptions.IncorrectDataException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
@@ -27,7 +28,7 @@ public class Olympiad implements Event{
         this.city = city;
 
         if (StringUtils.isEmpty(city))
-            throw new Olympiad.IncorrectNameCity("Empty name of city");
+            throw new IncorrectDataException("Empty name of city");
     }
 
     public int getPodiumPlace() {
@@ -38,9 +39,4 @@ public class Olympiad implements Event{
         this.podiumPlace = podiumPlace;
     }
 
-    static class IncorrectNameCity extends RuntimeException {
-        IncorrectNameCity(String message) {
-            super(message);
-        }
-    }
 }

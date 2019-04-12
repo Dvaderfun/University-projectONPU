@@ -1,3 +1,5 @@
+import exceptions.IncorrectDataException;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -52,7 +54,7 @@ public class Group {
 
     public Student findStudent(int studentId) {
         if (!Student.isIdTrue(studentId)) {
-            throw new Group.IncorrectDataException("Incorrect ID number");
+            throw new IncorrectDataException("Incorrect ID number");
         }
 
         for (Student s : students) {
@@ -75,7 +77,7 @@ public class Group {
 
     public boolean removeStudent(Student[] students, int studentId) {
         if (!Student.isIdTrue(studentId)) {
-            throw new Student.IncorrectDataException("Incorrect ID number");
+            throw new IncorrectDataException("Incorrect ID number");
         }
 
         int studentIndex = findStudentIndex(studentId);
@@ -121,12 +123,6 @@ public class Group {
 
     public boolean isIdTrue(int GroupId) {
         return (GroupId > 0);
-    }
-
-    static class IncorrectDataException extends RuntimeException {
-        IncorrectDataException(String message) {
-            super(message);
-        }
     }
 
 }

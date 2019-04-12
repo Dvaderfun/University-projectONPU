@@ -1,3 +1,4 @@
+import exceptions.IncorrectDataException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,13 @@ public class Student {
     private int studentId;
 
     private final static int STUDENT_ID_DEFAULT = 0;
+    private final static String STUDENT_NAME_DEFAULT = "noname";
+
+    public Student(){
+        studentId = STUDENT_ID_DEFAULT;
+        firstName = STUDENT_NAME_DEFAULT;
+        lastName = STUDENT_NAME_DEFAULT;
+    }
 
     public Student(String firstName, String lastName) {
         if (StringUtils.isEmpty(firstName))
@@ -75,23 +83,15 @@ public class Student {
         }
 
         this.studentId = studentId;
-
     }
 
     public static boolean isIdTrue(int studentId) {
         return (Math.ceil(Math.log10(studentId)) == 6 && studentId > 0);
     }
 
-    static class IncorrectDataException extends RuntimeException {
-        IncorrectDataException(String message) {
-            super(message);
-        }
 
-
-        @Override
-        public String toString() {
-            //TODO
-            return null;
-        }
+    @Override
+    public String toString() {
+        return null;
     }
 }
