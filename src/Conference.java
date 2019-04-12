@@ -16,7 +16,7 @@ public class Conference implements Event {
         this.articleName = articleName;
 
         if (articleName.trim().isEmpty()) {
-            throw new IncorrectDataException("Название доклада");
+            throw new IncorrectDataException("Empty name of article");
         }
     }
 
@@ -28,6 +28,8 @@ public class Conference implements Event {
     @Override
     public void setDate(Date date) {
         this.date = date;
+
+        // TODO
     }
 
     @Override
@@ -38,5 +40,9 @@ public class Conference implements Event {
     @Override
     public void setCity(String city) {
         this.city = city;
+
+        if (city.trim().isEmpty()){
+            throw new IncorrectDataException("Empty name of city");
+        }
     }
 }
