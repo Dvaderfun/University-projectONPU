@@ -109,12 +109,11 @@ public class Group {
         return (GroupId > 0);
     }
 
-    //TODO: исправить навзания
     public Student[] getActiveStudents(){
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.getEventNumber()>0){
+            if(s.getEventNumber>0){
                 subgroup.addStudent(s);
             }
         }
@@ -125,41 +124,39 @@ public class Group {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.equals(null))
-                continue;
-            if(s.getPrizePlaceNumber()>0){
+            if(s.getNumberOfWins>0){
                 subgroup.addStudent(s);
             }
         }
         return subgroup.getStudents();
     }
 
-    public int getActivStudentsNumber(){
+    public int getActivStdNumber(){
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.getEventNumber()>0){
+            if(s.getEventNumber>0){
                 subgroup.addStudent(s);
             }
         }
         return subgroup.getNumOfStudents();
     }
 
-    /*public int getContractStdNumber(){
+    public int getContractStdNumber(){
         int count = 0;
         for (Student s: this.students) {
             if(s instanceof ContractStudent){
                 count++;
             }
         }return count;
-    }*/
+    }
 
-   /* public int getScholarshipStdNumber(){
+    public int getScholarshipStdNumber(){
 
         return this.getNumOfStudents() - this.getContractStdNumber();
     }
-*/
-    /*public int getDebtorsNumber{
+
+    public int getDebtorsNumber{
         int count = 0;
         for (Student s: this.students) {
             if(s instanceof ContractStudent)
@@ -167,9 +164,7 @@ public class Group {
                     count++;
         }
         return count;
-    }*/
-    //TODO: В ЭТИХ МЕТОДАХ, ОГРАНИЧЕНЫХ TODO
-
+    }
 
     private int findStudentIndex(int studentId) {
         for (int i = 0; i < students.length; i++) {
