@@ -116,7 +116,7 @@ class GroupTest {
         System.out.println(gr);
         Group other = new Group(gr.sortStudent(gr.getStudents()));
         System.out.println(other);
-        assertNotEquals(gr.toString(), other.toString());
+        assertFalse(gr.toString() == other.toString());
 
     }
 }
