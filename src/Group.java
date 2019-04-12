@@ -64,9 +64,6 @@ public class Group {
     }
 
     private int findStudentIndex(int studentId) {
-        if (!Student.isIdTrue(studentId)) {
-            throw new Group.IncorrectDataException("Incorrect ID number");
-        }
         for (int i = 0; i < students.length; i++) {
             if (students[i].getStudentId() == studentId) {
                 return i;
