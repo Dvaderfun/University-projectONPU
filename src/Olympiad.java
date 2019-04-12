@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.*;
 
 public class Olympiad implements Event{
+    // TODO разобраться с Date и написать тест
     private Date date;
     private String city;
     private int podiumPlace;
@@ -27,7 +28,7 @@ public class Olympiad implements Event{
     public void setCity(String city) {
         this.city = city;
 
-        if (StringUtils.isEmpty(city))
+        if (city.trim().isEmpty())
             throw new IncorrectDataException("Empty name of city");
     }
 
@@ -37,6 +38,9 @@ public class Olympiad implements Event{
 
     public void setPodiumPlace(int podiumPlace) {
         this.podiumPlace = podiumPlace;
+
+        if (podiumPlace < 1)
+            throw new IncorrectDataException("Negative position on event");
     }
 
 }
