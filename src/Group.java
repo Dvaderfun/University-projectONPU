@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Group {
+    private final int DEFAULT_GROUP_ID = 1;
     private int groupId;
     private Student[] students;
 
-    private final int DEFAULT_GROUP_ID = 1;
 
     public Group(int groupId) {
         if (!isIdTrue(groupId)) {
@@ -21,7 +21,7 @@ public class Group {
 
     public Group(int groupId, int numberOfStud) {
         this(groupId);
-        if(numberOfStud < 0){
+        if (numberOfStud < 0) {
             throw new IncorrectDataException("Incorrect number of student");
         }
         this.students = new Student[numberOfStud];
@@ -37,9 +37,9 @@ public class Group {
     }
 
     public void setGroupId(int groupId) {
-        if(!isIdTrue(groupId)){
+        if (!isIdTrue(groupId)) {
             throw new IncorrectDataException("Incorrect group id");
-        }else{
+        } else {
             this.groupId = groupId;
         }
     }
@@ -58,6 +58,9 @@ public class Group {
         }
 
         for (Student s : students) {
+            if (s == null) {
+                continue;
+            }
             if (s.getStudentId() == studentId) {
                 return s;
             }
@@ -71,9 +74,8 @@ public class Group {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
-
 
     public boolean removeStudent(Student[] students, int studentId) {
         if (!Student.isIdTrue(studentId)) {
@@ -81,6 +83,8 @@ public class Group {
         }
 
         int studentIndex = findStudentIndex(studentId);
+        if (studentIndex == -1)
+            return false;
 
         if (studentIndex != 0) {
             System.arraycopy(students, studentIndex + 1, students, studentIndex,
@@ -91,7 +95,7 @@ public class Group {
         return false;
     }
 
-    public void addStudent(Student[] students, Student newStudent) {
+    public void addStudent(Student newStudent) {
 
         Student[] newArray = (Student[]) Array.newInstance(students.getClass().getComponentType(),
                 students.length + 1);
@@ -99,7 +103,6 @@ public class Group {
         System.arraycopy(new Student[]{newStudent}, 0, newArray, students.length, 1);
         this.students = newArray;
     }
-
 
     public Student[] sortStudent(Student[] students) {
 
@@ -125,7 +128,9 @@ public class Group {
         return (GroupId > 0);
     }
 
+
 }
+
 
 
 
