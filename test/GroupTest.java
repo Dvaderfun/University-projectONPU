@@ -134,15 +134,27 @@ class GroupTest {
         students[1] = new Student("Daniil", "Dermenzhy");
         students[2] = new Student("Alex", "Dermenzhy");
         Group group = new Group(students);
+        System.out.println(group);
         Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        System.out.println(sortedGroup);
         assertFalse(!group.toString().equals(sortedGroup.toString()));
     }
 
     @Test
     @DisplayName("Сортировка одного человека в группе")
-    void sortStudentOnlyOne(){
+    void sortStudentOnlyOnePerson(){
         Group group = new Group(1);
         group.addStudent(new Student("Artyom","Kazlanzhi"));
+        System.out.println(group);
+        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        System.out.println(sortedGroup);
+        assertTrue(group.toString().equals(sortedGroup.toString()));
+    }
+
+    @Test
+    @DisplayName("Сортировка пустой группы")
+    void sortStudentOnlyZeroPersons(){
+        Group group = new Group(1,0);
         System.out.println(group);
         Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
         System.out.println(sortedGroup);

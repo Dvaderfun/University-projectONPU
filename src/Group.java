@@ -69,15 +69,6 @@ public class Group {
         return null;
     }
 
-    private int findStudentIndex(int studentId) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].getStudentId() == studentId) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     public void removeStudent(int studentId) {
         if (!Student.isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number");
@@ -118,12 +109,75 @@ public class Group {
         return (GroupId > 0);
     }
 
+    public Student[] getActiveStudents(){
+        Student[] activeStudents = new Student[0];
+        Group subgroup = new Group(activeStudents);
+        for (Student s: this.students) {
+            if(s.getEventNumber>0){
+                subgroup.addStudent(s);
+            }
+        }
+        return subgroup.getStudents();
+    }
+
+    public Student[] getWinnerStudents(){
+        Student[] activeStudents = new Student[0];
+        Group subgroup = new Group(activeStudents);
+        for (Student s: this.students) {
+            if(s.getNumberOfWins>0){
+                subgroup.addStudent(s);
+            }
+        }
+        return subgroup.getStudents();
+    }
+
+    public int getActivStdNumber(){
+        Student[] activeStudents = new Student[0];
+        Group subgroup = new Group(activeStudents);
+        for (Student s: this.students) {
+            if(s.getEventNumber>0){
+                subgroup.addStudent(s);
+            }
+        }
+        return subgroup.getNumOfStudents();
+    }
+
+    public int getContractStdNumber(){
+        int count = 0;
+        for (Student s: this.students) {
+            if(s instanceof ContractStudent){
+                count++;
+            }
+        }return count;
+    }
+
+    public int getScholarshipStdNumber(){
+
+        return this.getNumOfStudents() - this.getContractStdNumber();
+    }
+
+    public int getDebtorsNumber{
+        int count = 0;
+        for (Student s: this.students) {
+            if(s instanceof ContractStudent)
+                if(s.RAZMER_ZADOLJNOSTI>0)
+                    count++;
+        }
+        return count;
+    }
+
+    private int findStudentIndex(int studentId) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i].getStudentId() == studentId) {
+                return i;
+            }
+        }
+        return -1;
+    }
     @Override
     public String toString() {
-        return "Group{" +
-                "groupId=" + groupId +
-                ", students=" + Arrays.toString(students) +
-                '}';
+        return "Group №" +  groupId +
+                ": \n\tStudents:" + "\t" + Arrays.toString(students);
     }
 }
 
