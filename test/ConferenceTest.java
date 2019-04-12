@@ -14,12 +14,14 @@ class ConferenceTest {
         assertThrows(IncorrectDataException.class, () -> conference.setArticleName("Влияние Папича на мозг"));
     }
 
+    //TODO доделать тест
     @Test
     void setDate() {
     }
 
     @Test
+    @DisplayName("Указать город")
     void setCity() {
-
+        assertThrows(IncorrectDataException.class, () -> conference.setCity("     "));
     }
 }

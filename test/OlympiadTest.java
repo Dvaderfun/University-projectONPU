@@ -12,13 +12,13 @@ class OlympiadTest {
     }
 
     @Test
-    @DisplayName("Указать город!")
+    @DisplayName("Указать город")
     void setCity() {
         assertThrows(IncorrectDataException.class, () -> olympiad.setCity("  "));
     }
 
     @Test
-    @DisplayName("Несуществующее место на олимпиаде!")
+    @DisplayName("Несуществующее место на олимпиаде")
     void setPodiumPlace() {
         assertThrows(IncorrectDataException.class, () -> olympiad.setPodiumPlace(0));
     }
