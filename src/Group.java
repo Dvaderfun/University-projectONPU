@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Group {
-
-    private Student student;
     private int groupId;
     private Student[] students;
 
@@ -53,6 +51,9 @@ public class Group {
     }
 
     public Student findStudent(int studentId) {
+        if (!Student.isIdTrue(studentId)) {
+            throw new Group.IncorrectDataException("Incorrect ID number");
+        }
 
         for (Student s : students) {
             if (s.getStudentId() == studentId) {
@@ -63,7 +64,7 @@ public class Group {
     }
 
     private int findStudentIndex(int studentId) {
-        if (student.isIdTrue(studentId)) {
+        if (!Student.isIdTrue(studentId)) {
             throw new Group.IncorrectDataException("Incorrect ID number");
         }
         for (int i = 0; i < students.length; i++) {
@@ -76,7 +77,7 @@ public class Group {
 
 
     public boolean removeStudent(Student[] students, int studentId) {
-        if (!student.isIdTrue(studentId)) {
+        if (!Student.isIdTrue(studentId)) {
             throw new Student.IncorrectDataException("Incorrect ID number");
         }
 
