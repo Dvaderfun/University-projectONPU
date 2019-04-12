@@ -113,7 +113,7 @@ public class Group {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.getEventNumber>0){
+            if(s.getEventNumber()>0){
                 subgroup.addStudent(s);
             }
         }
@@ -124,7 +124,7 @@ public class Group {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.getNumberOfWins>0){
+            if(s.getPrizePlaceNumber()>0){
                 subgroup.addStudent(s);
             }
         }
@@ -135,7 +135,7 @@ public class Group {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
         for (Student s: this.students) {
-            if(s.getEventNumber>0){
+            if(s.getEventNumber()>0){
                 subgroup.addStudent(s);
             }
         }
