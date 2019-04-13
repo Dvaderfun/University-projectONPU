@@ -1,7 +1,6 @@
 import exceptions.IncorrectDataException;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -45,7 +44,7 @@ public class Group {
         }
     }
 
-    public int getNumOfStudents() {
+    public int getStudentsNumber() {
         return students.length;
     }
 
@@ -53,7 +52,7 @@ public class Group {
         return students;
     }
 
-    public Student findStudent(int studentId) {
+    public Student getStudentById(int studentId) {
         if (!Student.isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number");
         }
@@ -74,7 +73,7 @@ public class Group {
             throw new IncorrectDataException("Incorrect ID number");
         }
 
-        Student removingStudent = findStudent(studentId);
+        Student removingStudent = getStudentById(studentId);
 
         this.students = ArrayUtils.removeElement(this.students, removingStudent);
     }
@@ -109,7 +108,6 @@ public class Group {
         return (GroupId > 0);
     }
 
-    //TODO: исправить навзания
     public Student[] getActiveStudents(){
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
@@ -142,34 +140,32 @@ public class Group {
                 subgroup.addStudent(s);
             }
         }
-        return subgroup.getNumOfStudents();
+        return subgroup.getStudentsNumber();
     }
 
-    /*public int getContractStdNumber(){
+    public int getContractStdNumber(){
         int count = 0;
         for (Student s: this.students) {
             if(s instanceof ContractStudent){
                 count++;
             }
         }return count;
-    }*/
-
-   /* public int getScholarshipStdNumber(){
-
-        return this.getNumOfStudents() - this.getContractStdNumber();
     }
-*/
-    /*public int getDebtorsNumber{
+
+    public int getScholarshipStdNumber(){
+
+        return this.getStudentsNumber() - this.getContractStdNumber();
+    }
+
+    public int getDebtorsNumber(){
         int count = 0;
         for (Student s: this.students) {
-            if(s instanceof Student)
-                if(s.RAZMER_ZADOLJNOSTI>0)
+            if(s instanceof ContractStudent)
+                if(((ContractStudent) s).getAmountDebt()>0)
                     count++;
         }
         return count;
-    }*/
-    //TODO: В ЭТИХ МЕТОДАХ, ОГРАНИЧЕНЫХ TODO
-
+    }
 
     private int findStudentIndex(int studentId) {
         for (int i = 0; i < students.length; i++) {
@@ -179,6 +175,7 @@ public class Group {
         }
         return -1;
     }
+
     @Override
     public String toString() {
         return "Group №" +  groupId +
