@@ -2,6 +2,7 @@ import exceptions.IncorrectDataException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Student implements Activist{
@@ -161,6 +162,13 @@ public class Student implements Activist{
         return arrayList.get(index);
     }
 
+    public void deleteEvent(Date date){
+        for (Event event: arrayList) {
+            if (event.getDate() == date){
+                arrayList.remove(event);
+            }
+        }
+    }
 
     @Override
     public String toString() {

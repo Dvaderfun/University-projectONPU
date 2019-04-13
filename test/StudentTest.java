@@ -112,7 +112,7 @@ class StudentTest {
         competition2 = new Competition();
 
         Date date = new Date();
-        date.setTime(1241246);
+        date.setYear(12);
 
         olympiad.setCity("Odessa");
         olympiad.setDate(date);
@@ -136,7 +136,7 @@ class StudentTest {
         competition.setWinCash(1000);
 
         competition2.setCity("Moscow");
-        competition.setDate(date);
+        competition2.setDate(date);
         competition2.setProjectName("TGay");
         competition2.setWinCash(0);
 
@@ -147,7 +147,7 @@ class StudentTest {
         student.addEvent(competition);
         student.addEvent(competition2);
 
-        System.out.println(student.getNameProjects());
+        System.out.println(competition.getDate());
         //System.out.println(student.getPrizePlaceNumber());
     }
 }

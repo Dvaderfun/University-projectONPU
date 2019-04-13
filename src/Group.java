@@ -162,7 +162,7 @@ public class Group {
     /*public int getDebtorsNumber{
         int count = 0;
         for (Student s: this.students) {
-            if(s instanceof ContractStudent)
+            if(s instanceof Student)
                 if(s.RAZMER_ZADOLJNOSTI>0)
                     count++;
         }
