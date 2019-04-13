@@ -1,3 +1,6 @@
+import exceptions.IncorrectDataException;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Payment {
@@ -29,5 +32,9 @@ public class Payment {
 
     public void setEducationPayment(double educationPayment) {
         this.educationPayment = educationPayment;
+
+        if(educationPayment < 0) {
+            throw new IncorrectDataException("Negative price of education");
+        }
     }
 }

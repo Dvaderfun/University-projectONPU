@@ -7,7 +7,7 @@ public class Competition implements Event {
     private Date date;
     private String city;
     private String projectName;
-    private int winCash = 0;
+    private double winCash = 0;
 
 
     @Override
@@ -46,7 +46,7 @@ public class Competition implements Event {
         }
     }
 
-    public int getWinCash() {
+    public double getWinCash() {
         return winCash;
     }
 
