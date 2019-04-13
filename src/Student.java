@@ -142,7 +142,7 @@ public class Student implements Activist{
                 Competition competition = (Competition) event;
 
                 String projectName = competition.getProjectName();
-                int winCash = competition.getWinCash();
+                double winCash = competition.getWinCash();
 
                 if (!projectName.isEmpty() && winCash > 0){
                     stringBuffer.append(projectName);
