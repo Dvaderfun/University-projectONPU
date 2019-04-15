@@ -162,6 +162,15 @@ public class Student implements Activist{
         return arrayList.get(index);
     }
 
+    public Event getEvent(Date date) {
+        for (Event event : arrayList) {
+            if (event.getDate() == date) {
+                    return arrayList.listIterator().next();
+            }
+        }
+        return null;
+    }
+
     public void deleteEvent(Date date){
         for (Event event: arrayList) {
             if (event.getDate() == date){
@@ -172,6 +181,25 @@ public class Student implements Activist{
 
     @Override
     public String toString() {
-        return this.lastName + " " + this.firstName;
+        StringBuilder stringBuilder;
+        stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Студент:\n")
+                .append(firstName)
+                .append(" ")
+                .append(lastName)
+                .append("Год поступления:\n")
+                .append(year)
+                .append("Student id:\n")
+                .append(studentId)
+                .append("Ивенты: ");
+
+        for (Event event : arrayList) {
+            stringBuilder
+                    .append(event.toString());
+        }
+
+        return stringBuilder.toString();
     }
 }
