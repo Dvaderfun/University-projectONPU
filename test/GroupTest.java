@@ -154,7 +154,7 @@ class GroupTest {
         students[2] = new Student("Alex", "Dermenzhy");
         Group group = new Group(students);
         System.out.println(group);
-        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        Group sortedGroup = new Group(group.getSortedStudents(group.getStudents()));
         System.out.println(sortedGroup);
         assertFalse(!group.toString().equals(sortedGroup.toString()));
     }
@@ -165,7 +165,7 @@ class GroupTest {
         Group group = new Group(1);
         group.addStudent(new Student("Artyom","Kazlanzhi"));
         System.out.println(group);
-        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        Group sortedGroup = new Group(group.getSortedStudents(group.getStudents()));
         System.out.println(sortedGroup);
         assertTrue(group.toString().equals(sortedGroup.toString()));
     }
@@ -175,7 +175,7 @@ class GroupTest {
     void sortStudentOnlyZeroPersons(){
         Group group = new Group(1,0);
         System.out.println(group);
-        Group sortedGroup = new Group(group.sortStudent(group.getStudents()));
+        Group sortedGroup = new Group(group.getSortedStudents(group.getStudents()));
         System.out.println(sortedGroup);
         assertTrue(group.toString().equals(sortedGroup.toString()));
     }
@@ -342,6 +342,21 @@ class GroupTest {
     void getDebtorsNumberEmtyGr() {
         g = new Group(2);
         assertSame(0, g.getDebtorsNumber());
+    }
+
+    @Test
+    void getToString(){
+        g = new Group(3);
+        g.addStudent(new Student("Вася", "Пупкин", 232323));
+        g.addStudent(new Student("Артём", "Казланжи", 234234));
+        g.addStudent(new Student("Владимир", "Борисов", 123435));
+        System.out.println(g);
+    }
+
+    @Test
+    void getToStringNoStundents(){
+        g = new Group(55);
+        System.out.println(g);
     }
 }
 

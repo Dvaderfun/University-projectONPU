@@ -84,7 +84,7 @@ public class Group {
 
     }
 
-    public Student[] sortStudent(Student[] students) {
+    public Student[] getSortedStudents(Student[] students) {
 
         Arrays.sort(students, (Comparator<Student>) (Student s1, Student s2) -> {
             String surname1 = s1.getLastName();
@@ -167,19 +167,33 @@ public class Group {
         return count;
     }
 
-    private int findStudentIndex(int studentId) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].getStudentId() == studentId) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     @Override
     public String toString() {
-        return "Group №" +  groupId +
-                ": \n\tStudents:" + "\t" + Arrays.toString(students);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Группа №")
+                .append(getGroupId())
+                .append("\n")
+                .append("Учащиеся:\n");
+
+        if(this.getStudents().length<1) {
+            stringBuilder.append("\t-");
+        }else{
+            Student[] std = this.getSortedStudents(this.getStudents());
+
+            for (Student s: std) {
+                stringBuilder.append(s.getLastName())
+                        .append(" ")
+                        .append(s.getFirstName())
+                        .append("\n");
+            }
+        }
+
+
+        return stringBuilder.toString();
+
     }
 }
 
