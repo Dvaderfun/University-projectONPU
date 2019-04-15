@@ -57,6 +57,25 @@ class GroupTest {
         });
     }
 
+    @Test
+    @DisplayName("получение студента по id, если массив студентов пуст")
+    void getStudentByIdIfNone() {
+
+        g = new Group(2);
+        System.out.print(g.getStudentById(234567));
+    }
+
+    @Test
+    @DisplayName("получение студента по id")
+    void getStudentById() {
+
+        g = new Group(2);
+        Student s = new  Student("sd", "sfg", 213456);
+        g.addStudent(new Student("1", "2", 111111));
+        g.addStudent(s);
+        g.addStudent(new Student("1", "2", 111112));
+        assertSame(g.getStudentById(213456), s);
+    }
 
     @Test
     @DisplayName("констуктор с готовыми студентами")
@@ -90,7 +109,7 @@ class GroupTest {
     @DisplayName("Получение кол-ва студентов")
     void getNumOfStudents() {
         g = new Group(6, 0);
-        assertEquals(0, g.getNumOfStudents());
+        assertEquals(0, g.getStudentsNumber());
     }
 
     @Test
@@ -101,11 +120,11 @@ class GroupTest {
         students[1] = new Student("a", "a", 123456);
         students[3] = new Student("a", "a", 888888);
         g = new Group(students);
-        Student founded = g.findStudent(123456);
+        Student founded = g.getStudentById(123456);
         assertSame(students[1], founded);
 
         assertDoesNotThrow(() -> {
-            Student s = g.findStudent(888888);
+            Student s = g.getStudentById(888888);
             assertSame(students[3], s);
         });
     }
@@ -114,16 +133,16 @@ class GroupTest {
     void removeStudent() {
         Group gr = new Group(5, 3);
         gr.addStudent(new Student("asd", "sdf", 332455));
-        assertEquals(4, gr.getNumOfStudents());
+        assertEquals(4, gr.getStudentsNumber());
         gr.removeStudent(332455);
-        assertEquals(3, gr.getNumOfStudents());
+        assertEquals(3, gr.getStudentsNumber());
     }
 
     @Test
     void addStudent() {
         Group gr = new Group(5, 3);
         gr.addStudent(new Student("asd", "asdg", 332455));
-        assertEquals(4, gr.getNumOfStudents());
+        assertEquals(4, gr.getStudentsNumber());
     }
 
     @Test
@@ -161,7 +180,6 @@ class GroupTest {
         assertTrue(group.toString().equals(sortedGroup.toString()));
     }
 
-
     @Test
     @DisplayName("Получение активных студентов группы")
     void getActiveStudents() {
@@ -182,7 +200,6 @@ class GroupTest {
         assertArrayEquals(active, g.getActiveStudents());
     }
 
-
     @Test
     @DisplayName("Получение активных студентов группы(их отсутсвие)")
     void getActiveStudentsNoone() {
@@ -198,7 +215,6 @@ class GroupTest {
         Student[] active = new Student[0];
         assertArrayEquals(active, g.getActiveStudents());
     }
-
 
     @Test
     @DisplayName("Получение кол-ва активных студентов группы(2)")
@@ -232,7 +248,6 @@ class GroupTest {
         assertEquals(0, g.getActivStudentsNumber());
     }
 
-
     @Test
     void getWinnerStudents() {
         Student s1 = new Student("Petya1", "Petrov1");
@@ -257,6 +272,76 @@ class GroupTest {
         expectedWinners[1] = s2;
         assertArrayEquals(expectedWinners, g.getWinnerStudents());
 
+    }
+
+    @Test
+    void getContractStdNumber() {
+        g = new Group(3);
+        g.addStudent(new Student());
+        g.addStudent(new ContractStudent());
+        g.addStudent(new ContractStudent());
+        g.addStudent(new Student());
+        g.addStudent(new Student());
+        assertSame(2,g.getContractStdNumber());
+    }
+
+    @Test
+    void getContractStdNumber0() {
+        g = new Group(3);
+        g.addStudent(new Student());
+        assertSame(0,g.getContractStdNumber());
+    }
+
+    @Test
+    void getScholarshipStdNumber() {
+        g = new Group(3);
+        g.addStudent(new Student());
+        g.addStudent(new ContractStudent());
+        g.addStudent(new ContractStudent());
+        g.addStudent(new Student());
+        g.addStudent(new Student());
+        assertSame(3, g.getScholarshipStdNumber());
+    }
+
+    @Test
+    void getScholarshipStdNumber0() {
+        g = new Group(3);
+        g.addStudent(new ContractStudent());
+        assertSame(0,g.getScholarshipStdNumber());
+    }
+
+    @Test
+    @DisplayName("Кол-во должников 1")
+    void getDebtorsNumber() {
+        g = new Group(2);
+        ContractStudent std1 = new ContractStudent();
+        std1.setCostEducationSemestr(12000);
+        g.addStudent(std1);
+        assertSame(1, g.getDebtorsNumber());
+    }
+
+    @Test
+    @DisplayName("Кол-во должников 1")
+    void getDebtorsNumberFew() {
+        g = new Group(2);
+        ContractStudent std1 = new ContractStudent();
+        std1.setCostEducationSemestr(12000);
+        g.addStudent(std1);
+
+        ContractStudent std2 = new ContractStudent();
+        std2.setCostEducationSemestr(12000);
+        g.addStudent(std2);
+
+        ContractStudent std3 = new ContractStudent();
+        g.addStudent(std3);
+        assertSame(2, g.getDebtorsNumber());
+    }
+
+    @Test
+    @DisplayName("Кол-во должников для пустой группы")
+    void getDebtorsNumberEmtyGr() {
+        g = new Group(2);
+        assertSame(0, g.getDebtorsNumber());
     }
 }
 
