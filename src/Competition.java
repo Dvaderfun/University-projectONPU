@@ -57,4 +57,30 @@ public class Competition implements Event {
             throw new IncorrectDataException("Negative prize");
         }
     }
+
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Название проекта: ")
+                .append("\"")
+                .append(getProjectName())
+                .append("\"")
+                .append("\n")
+                .append("Город ")
+                .append(getCity())
+                .append("\n")
+                .append("Дата: ")
+                .append(getDate());
+
+        if (getWinCash() != 0) {
+            stringBuilder
+                    .append("Выигрыш = ")
+                    .append(getWinCash());
+        }
+
+        return stringBuilder.toString();
+    }
 }

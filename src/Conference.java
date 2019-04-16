@@ -45,4 +45,23 @@ public class Conference implements Event {
             throw new IncorrectDataException("Empty name of city");
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Название статьи: ")
+                .append("\"")
+                .append(getArticleName())
+                .append("\"")
+                .append("\n")
+                .append("Город ")
+                .append(getCity())
+                .append("\n")
+                .append("Дата: ")
+                .append(getDate());
+
+        return stringBuilder.toString();
+    }
 }

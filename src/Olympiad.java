@@ -43,4 +43,22 @@ public class Olympiad implements Event{
             throw new IncorrectDataException("Negative position on event");
     }
 
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Место на олимпиаде: ")
+                .append(getPodiumPlace())
+                .append("\n")
+                .append("Город ")
+                .append(getCity())
+                .append("\n")
+                .append("Дата: ")
+                .append(getDate());
+
+        return stringBuilder.toString();
+    }
+
 }
