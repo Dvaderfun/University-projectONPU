@@ -135,8 +135,8 @@ public class Student implements Activist{
     //за которые студент получил вознаграждение на соревнованиях.
     @Override
     public String getNameProjects() {
-        StringBuffer stringBuffer;
-        stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder;
+        stringBuilder = new StringBuilder();
 
         for (Event event: arrayList) {
             if (event instanceof Competition){
@@ -146,12 +146,12 @@ public class Student implements Activist{
                 double winCash = competition.getWinCash();
 
                 if (!projectName.isEmpty() && winCash > 0){
-                    stringBuffer.append(projectName);
+                    stringBuilder.append(projectName);
                 }
 
             }
         }
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 
     public void addEvent(Event e){
