@@ -60,4 +60,21 @@ public class ContractStudent extends Student {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder;
+        stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append("Стоимость обучения за один семестр:\n")
+                .append(costEducationSemestr)
+                .append(" ")
+                .append("Список Платежей: ");
+        for (Payment payment : paymentsList) {
+            stringBuilder
+                    .append(payment.toString());
+        }
+        return stringBuilder.toString();
+    }
 }
