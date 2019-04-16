@@ -175,7 +175,7 @@ public class Group {
 
         stringBuilder
                 .append("Группа №")
-                .append(getGroupId())
+                .append(groupId)
                 .append("\n")
                 .append("Учащиеся:\n");
 
