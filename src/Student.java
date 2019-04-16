@@ -185,10 +185,11 @@ public class Student implements Activist{
         stringBuilder = new StringBuilder();
 
         stringBuilder
-                .append("Студент:\n")
+                .append("Студент: ")
                 .append(firstName)
                 .append(" ")
                 .append(lastName)
+                .append("\n")
                 .append("Год поступления:\n")
                 .append(year)
                 .append("Student id:\n")
