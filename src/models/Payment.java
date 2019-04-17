@@ -1,3 +1,5 @@
+package models;
+
 import exceptions.IncorrectDataException;
 
 import java.text.SimpleDateFormat;

@@ -1,4 +1,7 @@
 import exceptions.IncorrectDataException;
+import models.*;
+import models.events.Conference;
+import models.events.Olympiad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

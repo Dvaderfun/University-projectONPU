@@ -1,14 +1,26 @@
+package models.events;
+
 import exceptions.IncorrectDataException;
 
 import java.util.Date;
 
-public class Competition implements Event {
-
+public class Conference implements Event {
     private Date date;
     private String city;
-    private String projectName;
-    private double winCash = 0;
+    private String articleName;
 
+
+    public String getArticleName() {
+        return articleName;
+    }
+
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
+
+        if (articleName.trim().isEmpty()) {
+            throw new IncorrectDataException("Empty name of article");
+        }
+    }
 
     @Override
     public Date getDate() {
@@ -18,6 +30,8 @@ public class Competition implements Event {
     @Override
     public void setDate(Date date) {
         this.date = date;
+
+        // TODO
     }
 
     @Override
@@ -34,39 +48,14 @@ public class Competition implements Event {
         }
     }
 
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-
-        if (projectName.trim().isEmpty()){
-            throw new IncorrectDataException("Empty name of project");
-        }
-    }
-
-    public double getWinCash() {
-        return winCash;
-    }
-
-    public void setWinCash(int winCash) {
-        this.winCash = winCash;
-
-        if (winCash < 0 ) {
-            throw new IncorrectDataException("Negative prize");
-        }
-    }
-
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder
-                .append("Название проекта: ")
+                .append("Название статьи: ")
                 .append("\"")
-                .append(getProjectName())
+                .append(getArticleName())
                 .append("\"")
                 .append("\n")
                 .append("Город ")
@@ -74,12 +63,6 @@ public class Competition implements Event {
                 .append("\n")
                 .append("Дата: ")
                 .append(getDate());
-
-        if (getWinCash() != 0) {
-            stringBuilder
-                    .append("Выигрыш = ")
-                    .append(getWinCash());
-        }
 
         return stringBuilder.toString();
     }

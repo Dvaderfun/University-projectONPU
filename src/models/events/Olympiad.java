@@ -1,24 +1,14 @@
+package models.events;
+
 import exceptions.IncorrectDataException;
 
-import java.util.Date;
+import java.util.*;
 
-public class Conference implements Event {
+public class Olympiad implements Event {
+    // TODO разобраться с Date и написать тест
     private Date date;
     private String city;
-    private String articleName;
-
-
-    public String getArticleName() {
-        return articleName;
-    }
-
-    public void setArticleName(String articleName) {
-        this.articleName = articleName;
-
-        if (articleName.trim().isEmpty()) {
-            throw new IncorrectDataException("Empty name of article");
-        }
-    }
+    private int podiumPlace;
 
     @Override
     public Date getDate() {
@@ -28,8 +18,6 @@ public class Conference implements Event {
     @Override
     public void setDate(Date date) {
         this.date = date;
-
-        // TODO
     }
 
     @Override
@@ -41,20 +29,29 @@ public class Conference implements Event {
     public void setCity(String city) {
         this.city = city;
 
-        if (city.trim().isEmpty()){
+        if (city.trim().isEmpty())
             throw new IncorrectDataException("Empty name of city");
-        }
     }
+
+    public int getPodiumPlace() {
+        return podiumPlace;
+    }
+
+    public void setPodiumPlace(int podiumPlace) {
+        this.podiumPlace = podiumPlace;
+
+        if (podiumPlace < 1)
+            throw new IncorrectDataException("Negative position on event");
+    }
+
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder
-                .append("Название статьи: ")
-                .append("\"")
-                .append(getArticleName())
-                .append("\"")
+                .append("Место на олимпиаде: ")
+                .append(getPodiumPlace())
                 .append("\n")
                 .append("Город ")
                 .append(getCity())
@@ -64,4 +61,5 @@ public class Conference implements Event {
 
         return stringBuilder.toString();
     }
+
 }

@@ -1,4 +1,5 @@
 import exceptions.IncorrectDataException;
+import models.events.Competition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
