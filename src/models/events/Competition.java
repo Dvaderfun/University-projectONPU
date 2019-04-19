@@ -90,8 +90,8 @@ public class Competition implements Event {
 
         if (getWinCash() != 0) {
             stringBuilder
-                    .append("Выигрыш = ")
-                    .append(getWinCash());
+                    .append("\nВыигрыш = ")
+                    .append(winCash);
         }
 
         return stringBuilder.toString();

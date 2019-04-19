@@ -51,19 +51,27 @@ public class Conference implements Event {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        String noInfo = "Нет информации";
+        stringBuilder.append("Название доклада: ");
 
-        stringBuilder
-                .append("Название статьи: ")
-                .append("\"")
-                .append(getArticleName())
-                .append("\"")
-                .append("\n")
-                .append("Город ")
-                .append(getCity())
-                .append("\n")
-                .append("Дата: ")
-                .append(getDate());
+        if(articleName == null) {
+            stringBuilder.append(noInfo);
+        }else
+            stringBuilder.append(articleName);
+                stringBuilder.append("\n")
+                .append("Город: ");
+        if(city == null) {
+            stringBuilder.append(noInfo);
+        }else
+            stringBuilder.append(city);
 
+        stringBuilder.append("\n")
+                .append("Дата: ");
+        if(date == null){
+            stringBuilder.append(noInfo);
+        }else {
+            stringBuilder.append(date);
+        }
         return stringBuilder.toString();
     }
 }

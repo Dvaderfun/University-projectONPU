@@ -31,7 +31,7 @@ class CompetitionTest {
     }
 
     @Test
-    @DisplayName("toString, Нет информации в olymp)")
+    @DisplayName("toString, Нет информации в comp)")
     void getToStringNoInfo(){
         System.out.println(competition);
     }

@@ -3,6 +3,8 @@ import models.events.Conference;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConferenceTest {
@@ -20,5 +22,20 @@ class ConferenceTest {
     @DisplayName("Указать город")
     void setCity() {
         assertThrows(IncorrectDataException.class, () -> conference.setCity("     "));
+    }
+
+    @Test
+    @DisplayName("toString, Нет информации в conf")
+    void getToStringNoInfo(){
+        System.out.println(conference);
+    }
+
+    @Test
+    @DisplayName("toString")
+    void getToString(){
+        conference.setCity("Одесса");
+        conference.setArticleName("Article Name");
+        conference.setDate(new Date());
+        System.out.println(conference);
     }
 }
