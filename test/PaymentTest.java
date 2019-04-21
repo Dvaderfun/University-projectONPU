@@ -3,23 +3,28 @@ import models.Payment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentTest {
     Payment payment = new Payment();
-//    models.Payment payment1;
+    Date date;
 
-    @Test
-    void setDate() {
-    }
 
     @Test
     @DisplayName("Отрицательное значение платы за учебу")
     void setEducationPayment() {
-        assertThrows(IncorrectDataException.class, () -> payment.setEducationPayment(-23));
-
-//        assertThrows(IncorrectDataException.class, () -> {
-//            payment1 = new models.Payment(payment1.getDate(), -30);
-//        });
+        assertThrows(IncorrectDataException.class, () -> payment.setEducationPayment(-223));
     }
+
+
+    @Test
+    @DisplayName("Конструктор ругается")
+    void checkConstructor() {
+        assertThrows(IncorrectDataException.class, () ->{
+            new Payment(date = new Date(2022,1,3), 22000);
+        });
+    }
+
 }

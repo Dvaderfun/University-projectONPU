@@ -10,14 +10,31 @@ public class Payment {
     private double educationPayment;
 
 
-    Payment() {
+    public Payment() {
         this.date = null;
         this.educationPayment = 0;
     }
 
-    Payment(Date date, double educationPayment) {
+    public Payment(Date date, double educationPayment) {
         this.date = date;
         this.educationPayment = educationPayment;
+
+        if(educationPayment < 0) {
+            throw new IncorrectDataException("Negative price of education");
+        }
+
+        if (date.getYear() > 2019) {
+            throw new IncorrectDataException("Incorrect year");
+        }
+
+        if (date.getMonth() > 12 || date.getMonth() < 1) {
+            throw new IncorrectDataException("Incorrect month");
+        }
+
+        if (date.getDay() > 31 || date.getDay() < 1) {
+            throw new IncorrectDataException("Incorrect day");
+        }
+
     }
 
     public Date getDate() {
