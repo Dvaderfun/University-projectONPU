@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.IncorrectDataException;
+
 import java.util.LinkedList;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,7 +44,9 @@ public class ContractStudent extends Student {
     }
 
     public void setCostEducationSemestr(double costEducationSemestr) {
-        this.costEducationSemestr = costEducationSemestr;
+        if (costEducationSemestr < 0) {
+            throw new IncorrectDataException("Incorrect value cost education");
+        } else { this.costEducationSemestr = costEducationSemestr;}
     }
 
     public double getAmountDebt() {
