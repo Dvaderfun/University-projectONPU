@@ -1,3 +1,5 @@
+package models;
+
 import exceptions.IncorrectDataException;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -108,60 +110,61 @@ public class Group {
         return (GroupId > 0);
     }
 
-    public Student[] getActiveStudents(){
+    public Student[] getActiveStudents() {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
-        for (Student s: this.students) {
-            if(s.getEventNumber()>0){
+        for (Student s : this.students) {
+            if (s.getEventNumber() > 0) {
                 subgroup.addStudent(s);
             }
         }
         return subgroup.getStudents();
     }
 
-    public Student[] getWinnerStudents(){
+    public Student[] getWinnerStudents() {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
-        for (Student s: this.students) {
-            if(s.equals(null))
+        for (Student s : this.students) {
+            if (s.equals(null))
                 continue;
-            if(s.getPrizePlaceNumber()>0){
+            if (s.getPrizePlaceNumber() > 0) {
                 subgroup.addStudent(s);
             }
         }
         return subgroup.getStudents();
     }
 
-    public int getActivStudentsNumber(){
+    public int getActivStudentsNumber() {
         Student[] activeStudents = new Student[0];
         Group subgroup = new Group(activeStudents);
-        for (Student s: this.students) {
-            if(s.getEventNumber()>0){
+        for (Student s : this.students) {
+            if (s.getEventNumber() > 0) {
                 subgroup.addStudent(s);
             }
         }
         return subgroup.getStudentsNumber();
     }
 
-    public int getContractStdNumber(){
+    public int getContractStdNumber() {
         int count = 0;
-        for (Student s: this.students) {
-            if(s instanceof ContractStudent){
+        for (Student s : this.students) {
+            if (s instanceof ContractStudent) {
                 count++;
             }
-        }return count;
+        }
+        return count;
     }
 
-    public int getScholarshipStdNumber(){
+    public int getScholarshipStdNumber() {
 
         return this.getStudentsNumber() - this.getContractStdNumber();
     }
 
-    public int getDebtorsNumber(){
+    public int getDebtorsNumber() {
         int count = 0;
-        for (Student s: this.students) {
-            if(s instanceof ContractStudent)
-                if(((ContractStudent) s).getAmountDebt()>0)
+        for (Student s : this.students) {
+            if (s instanceof ContractStudent)
+                if (((ContractStudent) s).getAmountDebt() > 0)
                     count++;
         }
         return count;
@@ -174,20 +177,19 @@ public class Group {
 
         stringBuilder
                 .append("Группа №")
-                .append(getGroupId())
+                .append(groupId)
                 .append("\n")
                 .append("Учащиеся:\n");
 
-        if(this.getStudents().length<1) {
+        if (this.getStudents().length < 1) {
             stringBuilder.append("\t-");
-        }else{
-            Student[] std = this.getSortedStudents(this.getStudents());
-
-            for (Student s: std) {
-                stringBuilder.append(s.getLastName())
-                        .append(" ")
-                        .append(s.getFirstName())
-                        .append("\n");
+        } else {
+            for (Student s : this.students) {
+                stringBuilder.append("\t")
+                            .append(s.getLastName())
+                            .append(" ")
+                            .append(s.getFirstName())
+                            .append("\n");
             }
         }
 

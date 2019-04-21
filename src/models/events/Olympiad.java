@@ -1,9 +1,10 @@
+package models.events;
+
 import exceptions.IncorrectDataException;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
-public class Olympiad implements Event{
+public class Olympiad implements Event {
     // TODO разобраться с Date и написать тест
     private Date date;
     private String city;
@@ -47,17 +48,24 @@ public class Olympiad implements Event{
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-
+        String noInfo = "Нет информации";
         stringBuilder
                 .append("Место на олимпиаде: ")
-                .append(getPodiumPlace())
+                .append(podiumPlace)
                 .append("\n")
-                .append("Город ")
-                .append(getCity())
-                .append("\n")
-                .append("Дата: ")
-                .append(getDate());
+                .append("Город: ");
+        if(city == null) {
+            stringBuilder.append(noInfo);
+        }else
+            stringBuilder.append(city);
 
+        stringBuilder.append("\n")
+                .append("Дата: ");
+        if(date == null){
+            stringBuilder.append(noInfo);
+        }else {
+            stringBuilder.append(date);
+        }
         return stringBuilder.toString();
     }
 

@@ -1,16 +1,16 @@
 import exceptions.IncorrectDataException;
+import models.events.Competition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompetitionTest {
     Competition competition = new Competition();
 
-    @Test
-    void setDate() {
-        // TODO дописать тест
-    }
 
     @Test
     @DisplayName("Указать город")
@@ -29,4 +29,21 @@ class CompetitionTest {
     void setWinCash() {
         assertThrows(IncorrectDataException.class, () -> competition.setWinCash(0));
     }
+
+    @Test
+    @DisplayName("toString, Нет информации в comp)")
+    void getToStringNoInfo(){
+        System.out.println(competition);
+    }
+
+    @Test
+    @DisplayName("toString")
+    void getToString(){
+        competition.setProjectName("ONPU PROJ");
+        competition.setCity("Одесса");
+        competition.setWinCash(3000);
+        competition.setDate(new Date());
+        System.out.println(competition);
+    }
+
 }

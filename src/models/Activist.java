@@ -1,3 +1,5 @@
+package models;
+
 public interface Activist {
 
     //возвращающий количество мероприятий, в которых участвовал студент;

@@ -1,3 +1,5 @@
+package models.events;
+
 import java.util.Date;
 
 public interface Event {

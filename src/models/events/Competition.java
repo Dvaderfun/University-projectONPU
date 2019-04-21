@@ -1,3 +1,5 @@
+package models.events;
+
 import exceptions.IncorrectDataException;
 
 import java.util.Date;
@@ -17,6 +19,7 @@ public class Competition implements Event {
 
     @Override
     public void setDate(Date date) {
+        //Date уже подразумевает проверку на некорректные данные, тест не нужен
         this.date = date;
     }
 
@@ -63,22 +66,32 @@ public class Competition implements Event {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder
-                .append("Название проекта: ")
-                .append("\"")
-                .append(getProjectName())
-                .append("\"")
-                .append("\n")
-                .append("Город ")
-                .append(getCity())
-                .append("\n")
-                .append("Дата: ")
-                .append(getDate());
+        String noInfo = "Нет информации";
+        stringBuilder.append("Название проекта:");
+        if(projectName == null) {
+            stringBuilder.append(noInfo);
+        }else
+            stringBuilder.append(projectName);
+
+        stringBuilder.append("\n")
+                .append("Город: ");
+        if(city == null) {
+            stringBuilder.append(noInfo);
+        }else
+            stringBuilder.append(city);
+
+        stringBuilder.append("\n")
+                .append("Дата: ");
+        if(date == null){
+            stringBuilder.append(noInfo);
+        }else {
+            stringBuilder.append(date);
+        }
 
         if (getWinCash() != 0) {
             stringBuilder
-                    .append("Выигрыш = ")
-                    .append(getWinCash());
+                    .append("\nВыигрыш = ")
+                    .append(winCash);
         }
 
         return stringBuilder.toString();

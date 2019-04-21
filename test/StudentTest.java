@@ -1,4 +1,8 @@
 import exceptions.IncorrectDataException;
+import models.events.Competition;
+import models.events.Conference;
+import models.events.Olympiad;
+import models.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
