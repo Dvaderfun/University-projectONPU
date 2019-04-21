@@ -1,8 +1,7 @@
 package models;
 
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Payment {
@@ -49,7 +48,7 @@ public class Payment {
         return educationPayment;
     }
 
-    public void setEducationPayment(double educationPayment) {
+    public void setEducationPayment(double educationPayment) throws IncorrectDataException {
         this.educationPayment = educationPayment;
 
         if(educationPayment < 0) {

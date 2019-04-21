@@ -1,6 +1,7 @@
 package models;
 
-import exceptions.IncorrectDataException;
+import exception.DuplicateEventException;
+import exception.IncorrectDataException;
 import models.events.Competition;
 import models.events.Conference;
 import models.events.Event;
@@ -27,7 +28,7 @@ public class Student implements Activist {
         lastName = STUDENT_NAME_DEFAULT;
     }
 
-    public Student(String firstName, String lastName) {
+    public Student(String firstName, String lastName) throws IncorrectDataException {
         if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
@@ -41,7 +42,7 @@ public class Student implements Activist {
         arrayList = new ArrayList<>();
     }
 
-    public Student(String firstName, String lastName, int studentId) {
+    public Student(String firstName, String lastName, int studentId) throws IncorrectDataException {
         this(firstName, lastName);
 
         if (!isIdTrue(studentId))
@@ -62,21 +63,21 @@ public class Student implements Activist {
         return year;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws IncorrectDataException {
         if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws IncorrectDataException {
         if (lastName.isEmpty())
             throw new IncorrectDataException("Empty surname");
 
         this.lastName = lastName;
     }
 
-    public void setYear(int year) {
+    public void setYear(int year) throws IncorrectDataException {
         if (year < 0 || year > LocalDateTime.now().getYear())
             throw new IncorrectDataException("Incorrect Year. Only >0 and <2019");
 
@@ -87,7 +88,7 @@ public class Student implements Activist {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(int studentId) throws IncorrectDataException {
         if (!isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number. Only 6-digit");
         }
@@ -160,8 +161,11 @@ public class Student implements Activist {
         return stringBuilder.toString();
     }
 
-    public void addEvent(Event e){
-        arrayList.add(e);
+    public void addEvent(Event event) throws DuplicateEventException {
+        if (isDuplicateEvent(event)){
+            throw new DuplicateEventException();
+        }
+        arrayList.add(event);
     }
 
     public Event getEvent(int index){
@@ -177,12 +181,61 @@ public class Student implements Activist {
         return null;
     }
 
-    public void deleteEvent(Date date){
+    public void removeEvent(Date date){
         for (Event event: arrayList) {
             if (event.getDate() == date){
                 arrayList.remove(event);
             }
         }
+    }
+
+    public void removeEvent(Event e){
+        arrayList.remove(e);
+    }
+
+    private boolean isDuplicateEvent(Event e){
+        for (Event event: arrayList) {
+            if (e == event){
+               return true;
+            }
+
+            if (event instanceof Competition && e instanceof Competition){
+                Competition competition = (Competition) event;
+                Competition competitionInput = (Competition) e;
+
+                String compare1 = competition.toString();
+                String compare2 = competitionInput.toString();
+
+                if(compare1.equals(compare2))
+                    return true;
+
+            }
+
+
+            if (event instanceof Olympiad && e instanceof Olympiad){
+                Olympiad olympiad = (Olympiad) event;
+                Olympiad olympiadInput = (Olympiad) e;
+
+                String compare1 = olympiad.toString();
+                String compare2 = olympiadInput.toString();
+
+                if(compare1.equals(compare2))
+                    return true;
+            }
+
+            if (event instanceof Conference && e instanceof Conference){
+                Conference conference = (Conference) event;
+                Conference conferenceInput = (Conference) e;
+
+                String compare1 = conference.toString();
+                String compare2 = conferenceInput.toString();
+
+                if(compare1.equals(compare2))
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

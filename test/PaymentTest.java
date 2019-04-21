@@ -1,11 +1,11 @@
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 import models.Payment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PaymentTest {
     Payment payment = new Payment();

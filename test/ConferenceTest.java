@@ -1,11 +1,11 @@
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 import models.events.Conference;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConferenceTest {
 

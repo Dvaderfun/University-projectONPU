@@ -1,8 +1,8 @@
 package models.events;
 
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 
-import java.util.*;
+import java.util.Date;
 
 public class Olympiad implements Event {
     // TODO разобраться с Date и написать тест

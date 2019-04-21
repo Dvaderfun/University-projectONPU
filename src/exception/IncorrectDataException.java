@@ -1,4 +1,4 @@
-package exceptions;
+package exception;
 
 public class IncorrectDataException extends RuntimeException {
     public IncorrectDataException(String message) {

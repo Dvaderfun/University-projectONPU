@@ -1,12 +1,11 @@
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 import models.events.Competition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CompetitionTest {
     Competition competition = new Competition();
