@@ -74,4 +74,14 @@ public class Conference implements Event {
         }
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof Conference)
+            if(city.equals(((Conference) o).city)
+                    && date.equals(((Conference) o).date)
+                    && articleName.equals(((Conference) o).articleName))
+                return true;
+        return false;
+    }
 }
