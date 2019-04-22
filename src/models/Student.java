@@ -194,46 +194,27 @@ public class Student implements Activist {
         arrayList.remove(e);
     }
 
-
-    //TODO по факту реализовал Equals
     private boolean isDuplicateEvent(Event e){
         for (Event event: arrayList) {
-            if (e == event){
-               return true;
+            if (e.equals(event)){
+                return true;
             }
 
-            if (event instanceof Competition && e instanceof Competition){
+            if (event instanceof Competition){
                 Competition competition = (Competition) event;
-                Competition competitionInput = (Competition) e;
-
-                String compare1 = competition.toString();
-                String compare2 = competitionInput.toString();
-
-                if(compare1.equals(compare2))
+                if(competition.equals(e))
                     return true;
-
             }
 
-
-            if (event instanceof Olympiad && e instanceof Olympiad){
+            if (event instanceof Olympiad){
                 Olympiad olympiad = (Olympiad) event;
-                Olympiad olympiadInput = (Olympiad) e;
-
-                String compare1 = olympiad.toString();
-                String compare2 = olympiadInput.toString();
-
-                if(compare1.equals(compare2))
+                if(olympiad.equals(e))
                     return true;
             }
 
-            if (event instanceof Conference && e instanceof Conference){
+            if (event instanceof Conference){
                 Conference conference = (Conference) event;
-                Conference conferenceInput = (Conference) e;
-
-                String compare1 = conference.toString();
-                String compare2 = conferenceInput.toString();
-
-                if(compare1.equals(compare2))
+                if(conference.equals(e))
                     return true;
             }
         }
