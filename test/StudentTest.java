@@ -195,4 +195,6 @@ class StudentTest {
         assertThrows(DuplicateEventException.class, () ->
                 student.addEvent(olympiad3));
     }
+
+
 }

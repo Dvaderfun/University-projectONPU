@@ -174,6 +174,7 @@ public class Student implements Activist {
 
     public Event getEvent(Date date) {
         for (Event event : arrayList) {
+            //TODO date.equals ??
             if (event.getDate() == date) {
                     return arrayList.listIterator().next();
             }
@@ -193,6 +194,8 @@ public class Student implements Activist {
         arrayList.remove(e);
     }
 
+
+    //TODO по факту реализовал Equals
     private boolean isDuplicateEvent(Event e){
         for (Event event: arrayList) {
             if (e == event){

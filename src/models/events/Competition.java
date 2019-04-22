@@ -96,4 +96,15 @@ public class Competition implements Event {
 
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof Competition)
+            if (city.equals(((Competition) o).city)
+                    && date.equals(((Competition) o).date)
+                    && projectName.equals(((Competition) o).projectName)
+                    && winCash == ((Competition) o).winCash)
+                return true;
+        return false;
+    }
 }
