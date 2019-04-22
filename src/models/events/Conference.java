@@ -77,10 +77,10 @@ public class Conference implements Event {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof Conference)
-            if(city.equals(((Conference) o).city)
+        if(o.getClass() == this.getClass())
+            if(city.equalsIgnoreCase(((Conference) o).city)
                     && date.equals(((Conference) o).date)
-                    && articleName.equals(((Conference) o).articleName))
+                    && articleName.equalsIgnoreCase(((Conference) o).articleName))
                 return true;
         return false;
     }
