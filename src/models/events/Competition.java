@@ -72,14 +72,12 @@ public class Competition implements Event {
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(projectName);
-
         stringBuilder.append("\n")
                 .append("Город: ");
         if(city == null) {
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(city);
-
         stringBuilder.append("\n")
                 .append("Дата: ");
         if(date == null){
@@ -99,10 +97,10 @@ public class Competition implements Event {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof Competition)
-            if (city.equals(((Competition) o).city)
+        if(o.getClass() == this.getClass())
+            if (city.equalsIgnoreCase(((Competition) o).city)
                     && date.equals(((Competition) o).date)
-                    && projectName.equals(((Competition) o).projectName)
+                    && projectName.equalsIgnoreCase(((Competition) o).projectName)
                     && winCash == ((Competition) o).winCash)
                 return true;
         return false;
