@@ -14,7 +14,7 @@ public class Payment {
         this.educationPayment = 0;
     }
 
-    public Payment(Date date, double educationPayment) {
+    public Payment(Date date, double educationPayment) throws IncorrectDataException {
         this.date = date;
         this.educationPayment = educationPayment;
 

@@ -37,7 +37,7 @@ public class Olympiad implements Event {
     }
 
     @Override
-    public void setCity(String city) {
+    public void setCity(String city) throws IncorrectDataException{
         this.city = city;
 
         if (city.trim().isEmpty())
@@ -48,7 +48,7 @@ public class Olympiad implements Event {
         return podiumPlace;
     }
 
-    public void setPodiumPlace(int podiumPlace) {
+    public void setPodiumPlace(int podiumPlace) throws IncorrectDataException{
         this.podiumPlace = podiumPlace;
 
         if (podiumPlace < 1)

@@ -41,7 +41,7 @@ public class Group {
         return this.groupId;
     }
 
-    public void setGroupId(int groupId) {
+    public void setGroupId(int groupId) throws IncorrectDataException {
         if (!isIdTrue(groupId)) {
             throw new IncorrectDataException("Incorrect group id");
         } else {

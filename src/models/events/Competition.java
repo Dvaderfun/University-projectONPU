@@ -29,7 +29,7 @@ public class Competition implements Event {
     }
 
     @Override
-    public void setCity(String city) {
+    public void setCity(String city) throws IncorrectDataException {
         this.city = city;
 
         if (city.trim().isEmpty()){
@@ -41,7 +41,7 @@ public class Competition implements Event {
         return projectName;
     }
 
-    public void setProjectName(String projectName) {
+    public void setProjectName(String projectName) throws IncorrectDataException{
         this.projectName = projectName;
 
         if (projectName.trim().isEmpty()){
@@ -53,7 +53,7 @@ public class Competition implements Event {
         return winCash;
     }
 
-    public void setWinCash(int winCash) {
+    public void setWinCash(int winCash) throws IncorrectDataException{
         this.winCash = winCash;
 
         if (winCash < 0 ) {

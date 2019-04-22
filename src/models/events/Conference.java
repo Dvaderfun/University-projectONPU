@@ -14,7 +14,7 @@ public class Conference implements Event {
         return articleName;
     }
 
-    public void setArticleName(String articleName) {
+    public void setArticleName(String articleName) throws IncorrectDataException {
         this.articleName = articleName;
 
         if (articleName.trim().isEmpty()) {
@@ -40,7 +40,7 @@ public class Conference implements Event {
     }
 
     @Override
-    public void setCity(String city) {
+    public void setCity(String city) throws IncorrectDataException {
         this.city = city;
 
         if (city.trim().isEmpty()){
