@@ -82,8 +82,8 @@ public class Olympiad implements Event {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof Olympiad)
-            if(city.equals(((Olympiad) o).city)
+        if(o.getClass() == this.getClass())
+            if(city.equalsIgnoreCase(((Olympiad) o).city)
                 && date.equals(((Olympiad) o).date)
                 && podiumPlace == ((Olympiad) o).podiumPlace)
                     return true;
