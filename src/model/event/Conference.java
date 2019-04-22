@@ -3,6 +3,7 @@ package model.event;
 import exception.IncorrectDataException;
 import model.Event;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Conference implements Event {
@@ -11,15 +12,26 @@ public class Conference implements Event {
     private String articleName;
 
 
+    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY,0);
+    private static final String DEFAULT_CITY = "не указано";
+    private static final String DEFAULT_ARTICLE_NAME= "не указана";
+
+    public Conference(){
+        this.date = DEFAULT_DATE;
+        this.city = DEFAULT_CITY;
+        this.articleName = DEFAULT_ARTICLE_NAME;
+    }
+
     public String getArticleName() {
         return articleName;
     }
 
     public void setArticleName(String articleName) throws IncorrectDataException {
-        this.articleName = articleName;
 
         if (articleName.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of article");
+        } else{
+            this.articleName = articleName;
         }
     }
 
@@ -42,10 +54,11 @@ public class Conference implements Event {
 
     @Override
     public void setCity(String city) throws IncorrectDataException {
-        this.city = city;
 
         if (city.trim().isEmpty()){
             throw new IncorrectDataException("Empty name of city");
+        } else{
+            this.city = city;
         }
     }
 
@@ -55,20 +68,20 @@ public class Conference implements Event {
         String noInfo = "Нет информации";
         stringBuilder.append("Название доклада: ");
 
-        if(articleName == null) {
+        if(articleName.equals(DEFAULT_ARTICLE_NAME)) {
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(articleName);
                 stringBuilder.append("\n")
                 .append("Город: ");
-        if(city == null) {
+        if(city.equals(DEFAULT_CITY)){
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == null){
+        if(date == DEFAULT_DATE){
             stringBuilder.append(noInfo);
         }else {
             stringBuilder.append(date);
