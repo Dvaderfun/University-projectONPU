@@ -1,4 +1,5 @@
 import exception.IncorrectDataException;
+import models.events.Competition;
 import models.events.Conference;
 import models.events.Olympiad;
 import org.junit.jupiter.api.DisplayName;
@@ -28,13 +29,13 @@ class OlympiadTest {
 
     @Test
     @DisplayName("toString, Нет информации в olymp)")
-    void getToStringNoInfo(){
+    void getToStringNoInfo() {
         System.out.println(olympiad);
     }
 
     @Test
     @DisplayName("toString")
-    void getToString(){
+    void getToString() {
         olympiad.setCity("Одесса");
         olympiad.setPodiumPlace(3);
         olympiad.setDate(new Date());
@@ -43,40 +44,36 @@ class OlympiadTest {
 
     @Test
     @DisplayName("Тест на equals для пустых объектов")
-    void getEquals(){
+    void getEquals() {
         assertTrue(olympiad.equals(olympiad2));
     }
 
     @Test
     @DisplayName("Тест на equals для разных")
-    void getEqualsNotSame(){
+    void getEqualsNotSame() {
         olympiad.setPodiumPlace(3);
         assertTrue(!olympiad.equals(olympiad2));
     }
 
     @Test
     @DisplayName("Тест на equals для раных типов объектов")
-    void getEqualsNotSameObj(){
+    void getEqualsNotSameObj() {
         Conference c = new Conference();
+        Competition competition = new Competition();
         assertTrue(!olympiad.equals(c));
+        assertTrue(!olympiad.equals(competition));
     }
 
     @Test
     @DisplayName("Тест на equals для одинаковых, но не дефолтных")
-    void getEqualsSameNotDef(){
+//с разными регистрами
+    void getEqualsSameNotDef() {
         olympiad.setCity("Odessa");
         olympiad.setPodiumPlace(4);
-        olympiad2.setCity("Odessa");
+        olympiad2.setCity("odessa");
         olympiad2.setPodiumPlace(4);
         assertTrue(olympiad.equals(olympiad2));
     }
-
-
-
-
-
-
-
 
 
 }
