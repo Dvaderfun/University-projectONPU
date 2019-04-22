@@ -1,5 +1,5 @@
 import exception.IncorrectDataException;
-import models.events.Conference;
+import model.event.Conference;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

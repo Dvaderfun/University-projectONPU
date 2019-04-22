@@ -1,5 +1,5 @@
 import exception.IncorrectDataException;
-import models.Payment;
+import model.Payment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
