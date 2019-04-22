@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static java.util.Calendar.NOVEMBER;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OlympiadTest {
     Olympiad olympiad = new Olympiad();
@@ -75,5 +75,34 @@ class OlympiadTest {
         assertTrue(olympiad.equals(olympiad2));
     }
 
+    @Test
+    @DisplayName("Чекнули hashCode вообще что получим в консольке")
+    void getHashCodeInTerm() {
+        olympiad.setPodiumPlace(5);
+        System.out.println(olympiad.hashCode());
+        olympiad.setPodiumPlace(3);
+        System.out.println(olympiad.hashCode());
+    }
+
+    @Test
+    @DisplayName("Тест hashCode(Сравниваем notEquals объекты")
+    void getHashCode() {
+        olympiad.setCity("Test");
+        olympiad2.setPodiumPlace(4);
+        assertNotEquals(olympiad.hashCode(), olympiad2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Тест hashCode(Сравниваем Equals объекты")
+    //хоть регистры и разные, hashCode одинаков
+    void getHashCodeSame() {
+        olympiad.setCity("test");
+        olympiad2.setCity("Test");
+        olympiad.setPodiumPlace(4);
+        olympiad2.setPodiumPlace(4);
+        olympiad.setDate(new Date(2019,NOVEMBER,20));
+        olympiad2.setDate(new Date(2019,NOVEMBER,20));
+        assertEquals(olympiad.hashCode(), olympiad2.hashCode());
+    }
 
 }

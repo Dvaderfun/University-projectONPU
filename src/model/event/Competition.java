@@ -118,4 +118,10 @@ public class Competition implements Event {
                 return true;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 729843 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^
+                projectName.toLowerCase().hashCode() ^ Double.hashCode(winCash);
+    }
 }

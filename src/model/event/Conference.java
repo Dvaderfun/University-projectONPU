@@ -98,4 +98,11 @@ public class Conference implements Event {
                 return true;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 8456318 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^
+                articleName.toLowerCase().hashCode();
+    }
+
 }

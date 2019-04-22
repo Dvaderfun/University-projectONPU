@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+import static java.util.Calendar.NOVEMBER;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -78,6 +79,36 @@ class ConferenceTest {
         conference.setArticleName("Test");
         conference1.setArticleName("namE");
         assertTrue(!conference.equals(conference1));
+    }
+
+    @Test
+    @DisplayName("Чекнули hashCode вообще что получим в консольке")
+    void getHashCodeInTerm() {
+        conference.setCity("Odessa");
+        System.out.println(conference.hashCode());
+        conference1.setArticleName("Just simple test");
+        System.out.println(conference1.hashCode());
+    }
+
+    @Test
+    @DisplayName("Тест hashCode(Сравниваем notEquals объекты")
+    void getHashCode() {
+        conference.setCity("Test");
+        conference1.setArticleName("fdgfd");
+        assertNotEquals(conference1.hashCode(), conference.hashCode());
+    }
+
+    @Test
+    @DisplayName("Тест hashCode(Сравниваем Equals объекты")
+        //хоть регистры и разные, hashCode одинаков
+    void getHashCodeSame() {
+        conference1.setCity("test");
+        conference.setCity("Test");
+        conference1.setArticleName("what to say");
+        conference.setArticleName("WHAT TO say");
+        conference.setDate(new Date(2019,NOVEMBER,20));
+        conference1.setDate(new Date(2019,NOVEMBER,20));
+        assertEquals(conference.hashCode(), conference1.hashCode());
     }
 
 }

@@ -91,4 +91,8 @@ public class Olympiad implements Event {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 3777777 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^ podiumPlace;
+    }
 }
