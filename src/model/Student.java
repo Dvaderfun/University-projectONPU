@@ -1,10 +1,10 @@
-package models;
+package model;
 
-import exceptions.IncorrectDataException;
-import models.events.Competition;
-import models.events.Conference;
-import models.events.Event;
-import models.events.Olympiad;
+import exception.DuplicateEventException;
+import exception.IncorrectDataException;
+import model.event.Competition;
+import model.event.Conference;
+import model.event.Olympiad;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class Student implements Activist {
         lastName = STUDENT_NAME_DEFAULT;
     }
 
-    public Student(String firstName, String lastName) {
+    public Student(String firstName, String lastName) throws IncorrectDataException {
         if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
@@ -41,7 +41,7 @@ public class Student implements Activist {
         arrayList = new ArrayList<>();
     }
 
-    public Student(String firstName, String lastName, int studentId) {
+    public Student(String firstName, String lastName, int studentId) throws IncorrectDataException {
         this(firstName, lastName);
 
         if (!isIdTrue(studentId))
@@ -62,21 +62,21 @@ public class Student implements Activist {
         return year;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws IncorrectDataException {
         if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
 
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws IncorrectDataException {
         if (lastName.isEmpty())
             throw new IncorrectDataException("Empty surname");
 
         this.lastName = lastName;
     }
 
-    public void setYear(int year) {
+    public void setYear(int year) throws IncorrectDataException {
         if (year < 0 || year > LocalDateTime.now().getYear())
             throw new IncorrectDataException("Incorrect Year. Only >0 and <2019");
 
@@ -87,7 +87,7 @@ public class Student implements Activist {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(int studentId) throws IncorrectDataException {
         if (!isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number. Only 6-digit");
         }
@@ -160,8 +160,11 @@ public class Student implements Activist {
         return stringBuilder.toString();
     }
 
-    public void addEvent(Event e){
-        arrayList.add(e);
+    public void addEvent(Event event) throws DuplicateEventException {
+        if (isDuplicateEvent(event)){
+            throw new DuplicateEventException();
+        }
+        arrayList.add(event);
     }
 
     public Event getEvent(int index){
@@ -170,6 +173,7 @@ public class Student implements Activist {
 
     public Event getEvent(Date date) {
         for (Event event : arrayList) {
+            //TODO date.equals ??
             if (event.getDate() == date) {
                     return arrayList.listIterator().next();
             }
@@ -177,12 +181,44 @@ public class Student implements Activist {
         return null;
     }
 
-    public void deleteEvent(Date date){
+    public void removeEvent(Date date){
         for (Event event: arrayList) {
             if (event.getDate() == date){
                 arrayList.remove(event);
             }
         }
+    }
+
+    public void removeEvent(Event e){
+        arrayList.remove(e);
+    }
+
+    private boolean isDuplicateEvent(Event e){
+        for (Event event: arrayList) {
+            if (e.equals(event)){
+                return true;
+            }
+
+            if (event instanceof Competition){
+                Competition competition = (Competition) event;
+                if(competition.equals(e))
+                    return true;
+            }
+
+            if (event instanceof Olympiad){
+                Olympiad olympiad = (Olympiad) event;
+                if(olympiad.equals(e))
+                    return true;
+            }
+
+            if (event instanceof Conference){
+                Conference conference = (Conference) event;
+                if(conference.equals(e))
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -198,7 +234,7 @@ public class Student implements Activist {
                 .append("\n")
                 .append("Год поступления:\n")
                 .append(year)
-                .append("models.Student id:\n")
+                .append("model.Student id:\n")
                 .append(studentId)
                 .append("Ивенты: ");
 

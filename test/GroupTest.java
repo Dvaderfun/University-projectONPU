@@ -1,7 +1,9 @@
-import exceptions.IncorrectDataException;
-import models.*;
-import models.events.Conference;
-import models.events.Olympiad;
+import exception.IncorrectDataException;
+import model.ContractStudent;
+import model.Group;
+import model.Student;
+import model.event.Conference;
+import model.event.Olympiad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

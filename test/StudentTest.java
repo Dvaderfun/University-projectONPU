@@ -1,14 +1,16 @@
-import exceptions.IncorrectDataException;
-import models.events.Competition;
-import models.events.Conference;
-import models.events.Olympiad;
-import models.Student;
+import exception.DuplicateEventException;
+import exception.IncorrectDataException;
+import model.Student;
+import model.event.Competition;
+import model.event.Conference;
+import model.event.Olympiad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StudentTest {
     Student student;
@@ -115,9 +117,12 @@ class StudentTest {
         competition = new Competition();
         competition2 = new Competition();
 
-        Date date = new Date();
-        date.setYear(12);
+        Date date = new Date(121, Calendar.MARCH, 5624);
 
+
+        System.out.println(date.getMonth());
+
+        /*
         olympiad.setCity("Odessa");
         olympiad.setDate(date);
         olympiad.setPodiumPlace(1);
@@ -152,6 +157,44 @@ class StudentTest {
         student.addEvent(competition2);
 
         System.out.println(competition.getDate());
-        //System.out.println(student.getPrizePlaceNumber());
+        //System.out.println(student.getPrizePlaceNumber());*/
     }
+
+    @Test
+    @DisplayName("Test adding a Duplicate Event")
+    void testDuplicateEvents(){
+        student = new Student("Daniil", "Dermenzhy", 123456);
+
+        olympiad = new Olympiad();
+        olympiad2 = new Olympiad();
+        olympiad3 = new Olympiad();
+
+        olympiad.setCity("A");
+        olympiad2.setCity("A");
+        olympiad3.setCity("B");
+
+        Date date = new Date(119, Calendar.MARCH, 12);
+        Date date2 = new Date(129, Calendar.JANUARY, 13);
+        olympiad.setDate(date);
+        olympiad2.setDate(date);
+        olympiad3.setDate(date2);
+
+        olympiad.setPodiumPlace(2);
+        olympiad2.setPodiumPlace(2);
+        olympiad3.setPodiumPlace(3);
+
+        student.addEvent(olympiad);
+        student.addEvent(olympiad3);
+
+        assertThrows(DuplicateEventException.class, () ->
+                student.addEvent(olympiad));
+
+        assertThrows(DuplicateEventException.class, () ->
+            student.addEvent(olympiad2));
+
+        assertThrows(DuplicateEventException.class, () ->
+                student.addEvent(olympiad3));
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import exceptions.IncorrectDataException;
 
@@ -18,7 +18,6 @@ public class ContractStudent extends Student {
     public ContractStudent(String firstName, String lastName) {
         super(firstName, lastName);
         paymentsList = new LinkedList<>();
-        ;
     }
 
     public ContractStudent(String firstName, String lastName, int studentId) {

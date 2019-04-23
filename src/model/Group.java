@@ -1,7 +1,10 @@
-package models;
+package model;
 
-import exceptions.IncorrectDataException;
+
+
+import exception.IncorrectDataException;
 import org.apache.commons.lang3.ArrayUtils;
+
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,7 +15,7 @@ public class Group {
     private Student[] students;
 
 
-    public Group(int groupId) {
+    public Group(int groupId) throws IncorrectDataException {
         if (!isIdTrue(groupId)) {
             throw new IncorrectDataException("Incorrect group Id. Pos. number expected");
         } else {
@@ -21,7 +24,7 @@ public class Group {
         }
     }
 
-    public Group(int groupId, int numberOfStud) {
+    public Group(int groupId, int numberOfStud) throws IncorrectDataException {
         this(groupId);
         if (numberOfStud < 0) {
             throw new IncorrectDataException("Incorrect number of student");
@@ -38,7 +41,7 @@ public class Group {
         return this.groupId;
     }
 
-    public void setGroupId(int groupId) {
+    public void setGroupId(int groupId) throws IncorrectDataException {
         if (!isIdTrue(groupId)) {
             throw new IncorrectDataException("Incorrect group id");
         } else {
@@ -54,7 +57,7 @@ public class Group {
         return students;
     }
 
-    public Student getStudentById(int studentId) {
+    public Student getStudentById(int studentId) throws IncorrectDataException{
         if (!Student.isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number");
         }
@@ -70,7 +73,7 @@ public class Group {
         return null;
     }
 
-    public void removeStudent(int studentId) {
+    public void removeStudent(int studentId) throws IncorrectDataException{
         if (!Student.isIdTrue(studentId)) {
             throw new IncorrectDataException("Incorrect ID number");
         }
