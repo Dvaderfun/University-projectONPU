@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 
 import java.util.LinkedList;
 import java.util.Calendar;
@@ -50,8 +50,13 @@ public class ContractStudent extends Student {
 
     public double getAmountDebt() {
         Calendar thisYear = Calendar.getInstance();
-        return
-                (thisYear.get(Calendar.YEAR) - this.getYear()) * SEMESTR_AMOUNT * this.costEducationSemestr;
+        if (thisYear.get(Calendar.MONTH) < 3) {
+            return
+                    (thisYear.get(Calendar.YEAR) - this.getYear()) * SEMESTR_AMOUNT * this.costEducationSemestr - this.costEducationSemestr;
+        } else {
+            return
+                    (thisYear.get(Calendar.YEAR) - this.getYear()) * SEMESTR_AMOUNT * this.costEducationSemestr;
+        }
     }
 
     public void addPayment(Payment payments) {
@@ -68,13 +73,12 @@ public class ContractStudent extends Student {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder;
-        stringBuilder = new StringBuilder();
-
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-                .append("Стоимость обучения за один семестр:\n")
+                .append(super.toString())
+                .append("Стоимость обучения за один семестр:")
                 .append(costEducationSemestr)
-                .append(" ")
+                .append("\n")
                 .append("Список Платежей: ");
         for (Payment payment : paymentsList) {
             stringBuilder
