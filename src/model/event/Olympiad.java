@@ -1,26 +1,14 @@
-package model.event;
+package models.events;
 
 import exception.IncorrectDataException;
-import model.Event;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 public class Olympiad implements Event {
-
+    // TODO разобраться с Date и написать тест
     private Date date;
     private String city;
     private int podiumPlace;
-
-    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY,0);
-    private static final String DEFAULT_CITY = "не указано";
-    private static final int DEFAULT_PLACE = 0;
-
-    public Olympiad(){
-        this.date = DEFAULT_DATE;
-        this.city = DEFAULT_CITY;
-        this.podiumPlace = DEFAULT_PLACE;
-    }
 
     @Override
     public Date getDate() {
@@ -38,7 +26,7 @@ public class Olympiad implements Event {
     }
 
     @Override
-    public void setCity(String city) throws IncorrectDataException{
+    public void setCity(String city) {
         this.city = city;
 
         if (city.trim().isEmpty())
@@ -49,7 +37,7 @@ public class Olympiad implements Event {
         return podiumPlace;
     }
 
-    public void setPodiumPlace(int podiumPlace) throws IncorrectDataException{
+    public void setPodiumPlace(int podiumPlace) {
         this.podiumPlace = podiumPlace;
 
         if (podiumPlace < 1)
@@ -60,20 +48,20 @@ public class Olympiad implements Event {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        String noInfo = "Не указано";
+        String noInfo = "Нет информации";
         stringBuilder
                 .append("Место на олимпиаде: ")
                 .append(podiumPlace)
                 .append("\n")
                 .append("Город: ");
-        if(city == DEFAULT_CITY) {
+        if(city == null) {
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == DEFAULT_DATE){
+        if(date == null){
             stringBuilder.append(noInfo);
         }else {
             stringBuilder.append(date);
@@ -81,18 +69,4 @@ public class Olympiad implements Event {
         return stringBuilder.toString();
     }
 
-    @Override
-    public boolean equals(Object o){
-        if(o.getClass() == this.getClass())
-            if(city.equalsIgnoreCase(((Olympiad) o).city)
-                && date.equals(((Olympiad) o).date)
-                && podiumPlace == ((Olympiad) o).podiumPlace)
-                    return true;
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return 3777777 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^ podiumPlace;
-    }
 }

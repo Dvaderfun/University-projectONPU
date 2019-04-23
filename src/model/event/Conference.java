@@ -1,10 +1,9 @@
-package model.event;
+package models.events;
 
 import exception.IncorrectDataException;
-import model.Event;
 
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class Conference implements Event {
     private Date date;
@@ -12,26 +11,15 @@ public class Conference implements Event {
     private String articleName;
 
 
-    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY,0);
-    private static final String DEFAULT_CITY = "не указано";
-    private static final String DEFAULT_ARTICLE_NAME= "не указана";
-
-    public Conference(){
-        this.date = DEFAULT_DATE;
-        this.city = DEFAULT_CITY;
-        this.articleName = DEFAULT_ARTICLE_NAME;
-    }
-
     public String getArticleName() {
         return articleName;
     }
 
     public void setArticleName(String articleName) throws IncorrectDataException {
+        this.articleName = articleName;
 
         if (articleName.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of article");
-        } else{
-            this.articleName = articleName;
         }
     }
 
@@ -54,11 +42,10 @@ public class Conference implements Event {
 
     @Override
     public void setCity(String city) throws IncorrectDataException {
+        this.city = city;
 
-        if (city.trim().isEmpty()){
+        if (city.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of city");
-        } else{
-            this.city = city;
         }
     }
 
@@ -68,41 +55,36 @@ public class Conference implements Event {
         String noInfo = "Нет информации";
         stringBuilder.append("Название доклада: ");
 
-        if(articleName.equals(DEFAULT_ARTICLE_NAME)) {
+        if (articleName == null) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(articleName);
-                stringBuilder.append("\n")
+        stringBuilder.append("\n")
                 .append("Город: ");
-        if(city.equals(DEFAULT_CITY)){
+        if (city == null) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == DEFAULT_DATE){
+        if (date == null) {
             stringBuilder.append(noInfo);
-        }else {
+        } else {
             stringBuilder.append(date);
         }
         return stringBuilder.toString();
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o.getClass() == this.getClass())
-            if(city.equalsIgnoreCase(((Conference) o).city)
+    public boolean equals(Object o) {
+        if (o.getClass() == this.getClass())
+            if (city.equalsIgnoreCase(((Conference) o).city)
                     && date.equals(((Conference) o).date)
                     && articleName.equalsIgnoreCase(((Conference) o).articleName))
                 return true;
         return false;
     }
 
-    @Override
-    public int hashCode() {
-        return 8456318 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^
-                articleName.toLowerCase().hashCode();
-    }
 
 }

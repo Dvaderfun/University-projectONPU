@@ -55,4 +55,17 @@ public class Payment {
             throw new IncorrectDataException("Negative price of education");
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder
+                .append(getEducationPayment())
+                .append("UAH ")
+                .append("(Оплачено )")
+                .append(getDate());
+
+        return stringBuilder.toString();
+    }
 }
