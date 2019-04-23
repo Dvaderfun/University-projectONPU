@@ -1,11 +1,10 @@
-package models;
+package model;
 
 import exception.DuplicateEventException;
 import exception.IncorrectDataException;
-import models.events.Competition;
-import models.events.Conference;
-import models.events.Event;
-import models.events.Olympiad;
+import model.event.Competition;
+import model.event.Conference;
+import model.event.Olympiad;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -235,7 +234,7 @@ public class Student implements Activist {
                 .append("\n")
                 .append("Год поступления:\n")
                 .append(year)
-                .append("models.Student id:\n")
+                .append("model.Student id:\n")
                 .append(studentId)
                 .append("Ивенты: ");
 

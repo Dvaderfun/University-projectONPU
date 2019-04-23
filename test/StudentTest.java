@@ -1,9 +1,9 @@
 import exception.DuplicateEventException;
 import exception.IncorrectDataException;
-import models.Student;
-import models.events.Competition;
-import models.events.Conference;
-import models.events.Olympiad;
+import model.Student;
+import model.event.Competition;
+import model.event.Conference;
+import model.event.Olympiad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
