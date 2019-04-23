@@ -3,6 +3,7 @@ package models.events;
 import exception.IncorrectDataException;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Conference implements Event {
     private Date date;
@@ -43,7 +44,7 @@ public class Conference implements Event {
     public void setCity(String city) throws IncorrectDataException {
         this.city = city;
 
-        if (city.trim().isEmpty()){
+        if (city.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of city");
         }
     }
@@ -54,34 +55,36 @@ public class Conference implements Event {
         String noInfo = "Нет информации";
         stringBuilder.append("Название доклада: ");
 
-        if(articleName == null) {
+        if (articleName == null) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(articleName);
-                stringBuilder.append("\n")
+        stringBuilder.append("\n")
                 .append("Город: ");
-        if(city == null) {
+        if (city == null) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == null){
+        if (date == null) {
             stringBuilder.append(noInfo);
-        }else {
+        } else {
             stringBuilder.append(date);
         }
         return stringBuilder.toString();
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o.getClass() == this.getClass())
-            if(city.equalsIgnoreCase(((Conference) o).city)
+    public boolean equals(Object o) {
+        if (o.getClass() == this.getClass())
+            if (city.equalsIgnoreCase(((Conference) o).city)
                     && date.equals(((Conference) o).date)
                     && articleName.equalsIgnoreCase(((Conference) o).articleName))
                 return true;
         return false;
     }
+
+
 }

@@ -197,4 +197,22 @@ class StudentTest {
     }
 
 
+    @Test
+    void getEventNumber() {
+
+    }
+
+    @Test
+    void getPrizePlaceNumber() {
+    }
+
+    @Test
+    void getReportsNumber() {
+    }
+
+    @Test
+    void getNameProjects() {
+    }
+
+
 }

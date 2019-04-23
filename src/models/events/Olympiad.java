@@ -1,6 +1,6 @@
 package models.events;
 
-import exceptions.IncorrectDataException;
+import exception.IncorrectDataException;
 
 import java.util.*;
 
