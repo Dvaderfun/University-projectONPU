@@ -3,20 +3,33 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <VBox prefHeight="554.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
     <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Group #&amp;">
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
       <HBox prefHeight="11.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button fx:id="button_add1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="266.0" text="Add Student [НЕ ЮЗАЕМ ПОКА]">
+            <Button fx:id="button_add1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Event">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Students: 15">
+            <Button fx:id="button_add12" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Payment" />
+            <Button fx:id="button_add11" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Sort Students" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Events: 15">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -33,8 +46,8 @@
       </ListView>
         <HBox spacing="20.0" VBox.vgrow="NEVER">
             <children>
-                <Button fx:id="button_add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Group" HBox.hgrow="ALWAYS" />
-            <Button fx:id="button_add2" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Group" />
+                <Button fx:id="button_add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Student" HBox.hgrow="ALWAYS" />
+            <Button fx:id="button_add2" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Student" />
             </children>
             <VBox.margin>
                 <Insets />
