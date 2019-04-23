@@ -1,6 +1,7 @@
-package models.events;
+package model.event;
 
 import exception.IncorrectDataException;
+import model.Event;
 
 import java.util.Date;
 import java.util.Objects;
