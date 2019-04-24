@@ -212,5 +212,13 @@ class StudentTest {
     void getNameProjects() {
     }
 
-
+    @Test
+    @DisplayName("setYear не существующий год")
+    void TestSetYear() {
+        Student s = new Student();
+        assertThrows(IncorrectDataException.class, () ->{
+                    s.setYear(2020);
+                }
+        );
+    }
 }
