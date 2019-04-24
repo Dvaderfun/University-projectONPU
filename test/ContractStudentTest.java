@@ -51,7 +51,7 @@ class ContractStudentTest {
 
     @Test
     @DisplayName("Размер долга")
-    void CheckAmountDebt() {
+    void CheckAmountDebt2018() {
         Calendar thisYear =  Calendar.getInstance();
         ContractStudent cS = new ContractStudent("Vova", "Borya");
         cS.setCostEducationSemestr(13000);

@@ -81,7 +81,7 @@ public class Student implements Activist {
 
     public void setYear(int year) throws IncorrectDataException {
         if (year < 0 || year > LocalDateTime.now().getYear())
-            throw new IncorrectDataException("Incorrect Year. Only >0 and <2019");
+            throw new IncorrectDataException("Incorrect Year. Only >0 and <" + LocalDateTime.now().getYear());
 
         this.year = year;
     }
