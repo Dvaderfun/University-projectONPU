@@ -8,46 +8,13 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.Group;
 import model.ModelFacade;
+import model.Student;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main extends Application {
 
     private ModelFacade facade;
-
-    public void addGroup(Group e) {
-        facade.addGroup(e);
-    }
-
-    public void bindObserver(ListView o) {
-        facade.bindObserver(o);
-
-    }
-
-    public void deleteGroup(Group selectedItem) {
-        facade.deleteGroup(selectedItem);
-    }
-
-    public void openGroup() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../view/students_list.fxml"));
-            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            Stage stage = new Stage();
-            stage.setTitle("New Window");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-        }
-    }
 
     public static void main(String[] args) {
         launch(args);
@@ -64,11 +31,93 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/groups_list.fxml"));
         Parent root = loader.load();
 
-        GroupController controller = loader.getController();
+        MainController controller = loader.getController();
         controller.setMain(this);
 
         primaryStage.setTitle("Groups");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
+
+    /*****************************************************/
+
+    public void addGroup(Group e) {
+        facade.addGroup(e);
+    }
+
+    public void bindGroups(ListView o) {
+        facade.bindGroups(o);
+    }
+
+    public void deleteGroup(Group selectedItem) {
+        facade.deleteGroup(selectedItem);
+    }
+
+
+
+    public void addStudent(Student s, int groupId) {
+        facade.addStudent(s, groupId);
+    }
+
+    public void deleteStudent(Student selectedItem, int groupId) {
+        facade.deleteStudent(selectedItem, groupId);
+    }
+
+    public void bindStudents(ListView o) {
+        facade.bindStudents(o);
+    }
+
+
+
+
+
+    public void openGroup(int groupId) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/students_list.fxml"));
+
+        Parent root;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        GroupController groupController = loader.getController();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Group");
+        stage.show();
+
+        groupController.setMain(this);
+        groupController.setGroup(groupId);
+
+        facade.updateStudentsList(groupId-1);
+    }
+
+    public void openStudentCard(int groupId) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/student_card.fxml"));
+
+        Parent root;
+
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        StudentCardController studentCardController = loader.getController();
+
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Add student");
+        stage.show();
+
+        studentCardController.setMain(this);
+        studentCardController.setGroup(groupId);
+    }
+
 }
