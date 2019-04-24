@@ -73,7 +73,7 @@ public class ContractStudent extends Student {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder =  new StringBuilder();
         stringBuilder
                 .append(super.toString())
                 .append("Стоимость обучения за один семестр:")
