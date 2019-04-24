@@ -321,25 +321,36 @@ class GroupTest {
         g = new Group(2);
         ContractStudent std1 = new ContractStudent();
         std1.setCostEducationSemestr(12000);
+        std1.setYear(2018);
         g.addStudent(std1);
-        assertSame(1, g.getDebtorsNumber());
+        ContractStudent std2 = new ContractStudent();
+        std2.setCostEducationSemestr(13000);
+        std2.setYear(2017);
+        g.addStudent(std2);
+        ContractStudent std3 = new ContractStudent();
+        g.addStudent(std3);
+        assertSame(2, g.getDebtorsNumber());
     }
 
     @Test
-    @DisplayName("Кол-во должников ")
+    @DisplayName("Кол-во должников 1")
     void getDebtorsNumberFew() {
-        g = new Group(2);
+        g = new Group(1);
         ContractStudent std1 = new ContractStudent();
         std1.setCostEducationSemestr(12000);
+        std1.setYear(2018);
         g.addStudent(std1);
 
         ContractStudent std2 = new ContractStudent();
         std2.setCostEducationSemestr(12000);
+        std2.setYear(2017);
         g.addStudent(std2);
 
         ContractStudent std3 = new ContractStudent();
+        std3.setCostEducationSemestr(12000);
+        std3.setYear(2017);
         g.addStudent(std3);
-        assertSame(2, g.getDebtorsNumber());
+        assertSame(3, g.getDebtorsNumber());
     }
 
     @Test

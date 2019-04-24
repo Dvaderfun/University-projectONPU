@@ -35,6 +35,12 @@ class ContractStudentTest {
     }
 
     @Test
+    void getAmountDebt(){
+        cS.setCostEducationSemestr(500);
+        System.out.println(cS.getAmountDebt());
+    }
+
+    @Test
     @DisplayName("Геттер платы за обучение")
     void getCostEducationSemestr() {
         ContractStudent cS = new ContractStudent("Vova", "Borya");
@@ -51,7 +57,7 @@ class ContractStudentTest {
 
     @Test
     @DisplayName("Размер долга")
-    void CheckAmountDebt2018() {
+    void сheckAmountDebt2018() {
         Calendar thisYear =  Calendar.getInstance();
         ContractStudent cS = new ContractStudent("Vova", "Borya");
         cS.setCostEducationSemestr(13000);

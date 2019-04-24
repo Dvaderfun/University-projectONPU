@@ -166,9 +166,10 @@ public class Group {
     public int getDebtorsNumber() {
         int count = 0;
         for (Student s : this.students) {
-            if (s instanceof ContractStudent)
+            if (s instanceof ContractStudent) {
                 if (((ContractStudent) s).getAmountDebt() > 0)
                     count++;
+            }
         }
         return count;
     }
