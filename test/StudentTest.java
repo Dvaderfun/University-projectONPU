@@ -204,6 +204,13 @@ class StudentTest {
     }
 
     @Test
+    void getToString2(){
+        student = new Student("Петя", "Иванов");
+        System.out.println(student.toString());
+    }
+
+
+    @Test
     void getEventNumber() {
 
     }

@@ -242,14 +242,17 @@ public class Student implements Activist {
                 .append(studentId)
                 .append("\n")
                 .append("Ивенты: ");
-
+        if(arrayList.isEmpty()) {
+            stringBuilder.append("-");
+            return stringBuilder.toString();
+        }
+        stringBuilder.append("\n");
         for (Event event : arrayList) {
             if (event != null) {
                 stringBuilder
                         .append(event.toString());
             }
         }
-
         return stringBuilder.toString();
     }
 }

@@ -25,7 +25,7 @@ class ContractStudentTest {
     }
 
     @Test
-    @DisplayName("Проверяю сам")
+    @DisplayName("Просто чекнули в консоли, без assert")
     void getToString() {
         ContractStudent cS = new ContractStudent("Vova", "Borya");
         cS.setCostEducationSemestr(12000);
