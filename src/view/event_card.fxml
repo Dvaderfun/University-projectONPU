@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="604.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adding an event">
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <HBox>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+         <children>
+            <ComboBox fx:id="eventPicker" prefHeight="31.0" prefWidth="587.0" promptText="Choose an event" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="eventCity" promptText="Odessa">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </PasswordField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <DatePicker fx:id="datePicker" prefHeight="31.0" prefWidth="113.0" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Competition">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Google Sans Medium" size="15.0" />
+         </font>
+      </Text>
+      <HBox disable="true">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project name:">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="projectName" prefHeight="31.0" prefWidth="115.0" promptText="Zalu Pech" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox disable="true">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prize cash:">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="cashPrize" prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Conference">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Google Sans Medium" size="15.0" />
+         </font>
+      </Text>
+      <HBox disable="true">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Article name:">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="articleName" prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Olympiad">
+         <font>
+            <Font name="Google Sans Medium" size="15.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </Text>
+      <HBox disable="true">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Place:">
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="place" prefHeight="31.0" prefWidth="115.0" promptText="1" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Button fx:id="saveEvent" alignment="CENTER" mnemonicParsing="false" text="Save">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin></Button>
+   </children>
+</VBox>
