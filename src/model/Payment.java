@@ -10,7 +10,7 @@ public class Payment {
 
 
     public Payment() {
-        this.date = null;
+        this.date = new Date();
         this.educationPayment = 0;
     }
 

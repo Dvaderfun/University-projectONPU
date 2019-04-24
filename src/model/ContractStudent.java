@@ -79,10 +79,12 @@ public class ContractStudent extends Student {
                 .append("Стоимость обучения за один семестр:")
                 .append(costEducationSemestr)
                 .append("\n")
-                .append("Список Платежей: ");
+                .append("Список Платежей: \n");
         for (Payment payment : paymentsList) {
             stringBuilder
-                    .append(payment.toString());
+                    .append(payment.toString())
+                    .append("\n");
+
         }
         return stringBuilder.toString();
     }

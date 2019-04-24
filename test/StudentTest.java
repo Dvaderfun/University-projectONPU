@@ -194,6 +194,14 @@ class StudentTest {
                 student.addEvent(olympiad3));
     }
 
+    @Test
+    void getToString(){
+        student = new Student("Петя", "Иванов");
+        Olympiad o = new Olympiad();
+        o.setCity("Test city");
+        student.addEvent(o);
+        System.out.println(student.toString());
+    }
 
     @Test
     void getEventNumber() {

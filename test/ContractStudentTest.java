@@ -29,6 +29,8 @@ class ContractStudentTest {
     void getToString() {
         ContractStudent cS = new ContractStudent("Vova", "Borya");
         cS.setCostEducationSemestr(12000);
+        cS.addPayment(new Payment());
+        cS.addPayment(new Payment());
         System.out.println(cS);
     }
 

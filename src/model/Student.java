@@ -20,11 +20,14 @@ public class Student implements Activist {
 
     private final static int STUDENT_ID_DEFAULT = 0;
     private final static String STUDENT_NAME_DEFAULT = "noname";
+    private final static int STUDENT_ENTERED_YEAR = LocalDateTime.now().getYear();
 
     public Student(){
         studentId = STUDENT_ID_DEFAULT;
+        year = STUDENT_ENTERED_YEAR;
         firstName = STUDENT_NAME_DEFAULT;
         lastName = STUDENT_NAME_DEFAULT;
+        arrayList = new ArrayList<Event>();
     }
 
     public Student(String firstName, String lastName) throws IncorrectDataException {
@@ -232,15 +235,19 @@ public class Student implements Activist {
                 .append(" ")
                 .append(lastName)
                 .append("\n")
-                .append("Год поступления:\n")
+                .append("Год поступления: ")
                 .append(year)
-                .append("model.Student id:\n")
+                .append("\n")
+                .append("Student id: ")
                 .append(studentId)
+                .append("\n")
                 .append("Ивенты: ");
 
         for (Event event : arrayList) {
-            stringBuilder
-                    .append(event.toString());
+            if (event != null) {
+                stringBuilder
+                        .append(event.toString());
+            }
         }
 
         return stringBuilder.toString();
