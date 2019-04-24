@@ -32,7 +32,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <TextField promptText="250" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="cash" promptText="250" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -53,7 +53,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <DatePicker prefHeight="31.0" prefWidth="178.0" HBox.hgrow="ALWAYS" />
+            <DatePicker fx:id="date" prefHeight="31.0" prefWidth="178.0" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -65,7 +65,7 @@
          </VBox.margin>
       </HBox>
       <Separator prefWidth="200.0" />
-      <Button alignment="CENTER" mnemonicParsing="false" text="Save">
+      <Button fx:id="savePayment" alignment="CENTER" mnemonicParsing="false" text="Save">
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
          </VBox.margin></Button>

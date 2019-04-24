@@ -29,7 +29,7 @@
             <Insets left="10.0" right="10.0" />
          </VBox.margin>
          <children>
-            <ComboBox prefHeight="31.0" prefWidth="587.0" promptText="Choose an event" HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="eventPicker" prefHeight="31.0" prefWidth="587.0" promptText="Choose an event" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <HBox>
@@ -42,7 +42,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <PasswordField promptText="Odessa">
+            <PasswordField fx:id="eventCity" promptText="Odessa">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
@@ -55,7 +55,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <DatePicker prefHeight="31.0" prefWidth="113.0" HBox.hgrow="ALWAYS" />
+            <DatePicker fx:id="datePicker" prefHeight="31.0" prefWidth="113.0" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -80,7 +80,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <TextField prefHeight="31.0" prefWidth="115.0" promptText="Zalu Pech" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="projectName" prefHeight="31.0" prefWidth="115.0" promptText="Zalu Pech" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -96,7 +96,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <TextField prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="cashPrize" prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -121,7 +121,7 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <TextField prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="articleName" prefHeight="31.0" prefWidth="115.0" promptText="250" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -146,14 +146,14 @@
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
             </Text>
-            <TextField prefHeight="31.0" prefWidth="115.0" promptText="1" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="place" prefHeight="31.0" prefWidth="115.0" promptText="1" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
          </VBox.margin>
       </HBox>
       <Separator prefWidth="200.0" />
-      <Button alignment="CENTER" mnemonicParsing="false" text="Save">
+      <Button fx:id="saveEvent" alignment="CENTER" mnemonicParsing="false" text="Save">
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
          </VBox.margin></Button>

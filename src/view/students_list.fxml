@@ -22,13 +22,13 @@
       </ToolBar>
       <HBox prefHeight="11.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button fx:id="button_add1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Event">
+            <Button fx:id="addEvent" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Event">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="button_add12" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Payment" />
-            <Button fx:id="button_add11" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Sort Students" />
+            <Button fx:id="addPayment" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Payment" />
+            <Button fx:id="sortStudents" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Sort Students" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Events: 15">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -46,8 +46,8 @@
       </ListView>
         <HBox spacing="20.0" VBox.vgrow="NEVER">
             <children>
-                <Button fx:id="button_add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Student" HBox.hgrow="ALWAYS" />
-            <Button fx:id="button_add2" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Student" />
+                <Button fx:id="addStudent" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Student" HBox.hgrow="ALWAYS" />
+            <Button fx:id="removeStudent" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Student" />
             </children>
             <VBox.margin>
                 <Insets />

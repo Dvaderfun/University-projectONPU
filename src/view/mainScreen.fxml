@@ -11,12 +11,12 @@
     <children>
       <HBox prefHeight="11.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button fx:id="button_add1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="172.0" text="Add Student">
+            <Button fx:id="addStudent" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="172.0" text="Add Student">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Students: 15">
+            <Text fx:id="studentQuantity" strokeType="OUTSIDE" strokeWidth="0.0" text="Students: 15">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -33,8 +33,8 @@
       </ListView>
         <HBox spacing="20.0" VBox.vgrow="NEVER">
             <children>
-                <Button fx:id="button_add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Group" HBox.hgrow="ALWAYS" />
-            <Button fx:id="button_add2" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Group" />
+                <Button fx:id="addGroup" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Group" HBox.hgrow="ALWAYS" />
+            <Button fx:id="removeGroup" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Group" />
             </children>
             <VBox.margin>
                 <Insets />
