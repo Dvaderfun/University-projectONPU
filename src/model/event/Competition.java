@@ -119,9 +119,12 @@ public class Competition implements Event {
         return false;
     }
 
+    //toLowerCase нужен для того, чтобы ивенты с по факту одинаковыми городами, но разным регистром написания
+    //имели один и тот же hashCode, иначе hashCode для city вернет разные результаты
     @Override
     public int hashCode() {
         return 729843 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^
                 projectName.toLowerCase().hashCode() ^ Double.hashCode(winCash);
     }
 }
+

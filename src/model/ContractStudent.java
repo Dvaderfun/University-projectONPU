@@ -78,7 +78,7 @@ public class ContractStudent extends Student {
                 .append("\n")
                 .append(super.toString())
                 .append("\n")
-                .append("Стоимость обучения за один семестр:")
+                .append("Стоимость обучения за один семестр: ")
                 .append(costEducationSemestr)
                 .append("\n")
                 .append("Список Платежей: \n");

@@ -94,7 +94,7 @@ class OlympiadTest {
 
     @Test
     @DisplayName("Тест hashCode(Сравниваем Equals объекты")
-    //хоть регистры и разные, hashCode одинаков
+        //хоть регистры и разные, hashCode одинаков
     void getHashCodeSame() {
         olympiad.setCity("test");
         olympiad2.setCity("Test");

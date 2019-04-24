@@ -85,10 +85,14 @@ public class Olympiad implements Event {
     public boolean equals(Object o){
         if(o.getClass() == this.getClass())
             if(city.equalsIgnoreCase(((Olympiad) o).city)
-                && date.equals(((Olympiad) o).date)
-                && podiumPlace == ((Olympiad) o).podiumPlace)
-                    return true;
+                    && date.equals(((Olympiad) o).date)
+                    && podiumPlace == ((Olympiad) o).podiumPlace)
+                return true;
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 3777777 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^ podiumPlace;
+    }
 }

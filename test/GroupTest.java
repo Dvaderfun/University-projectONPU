@@ -326,7 +326,7 @@ class GroupTest {
     }
 
     @Test
-    @DisplayName("Кол-во должников 1")
+    @DisplayName("Кол-во должников ")
     void getDebtorsNumberFew() {
         g = new Group(2);
         ContractStudent std1 = new ContractStudent();

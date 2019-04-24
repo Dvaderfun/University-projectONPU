@@ -72,7 +72,7 @@ public class Conference implements Event {
             stringBuilder.append(noInfo);
         }else
             stringBuilder.append(articleName);
-                stringBuilder.append("\n")
+        stringBuilder.append("\n")
                 .append("Город: ");
         if(city.equals(DEFAULT_CITY)){
             stringBuilder.append(noInfo);
@@ -98,4 +98,11 @@ public class Conference implements Event {
                 return true;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 8456318 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^
+                articleName.toLowerCase().hashCode();
+    }
+
 }
