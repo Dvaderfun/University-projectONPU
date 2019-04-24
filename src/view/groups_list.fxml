@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<VBox prefHeight="554.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GroupController">
+<VBox prefHeight="554.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <children>
       <HBox prefHeight="11.0" prefWidth="600.0" spacing="20.0">
          <children>
