@@ -16,4 +16,4 @@ https://trello.com/b/ME1H9Mqy
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Dvaderfun/University-projectONPU/blob/master/LICENSE)
 
 *Николай Анатольевич, сильно не бейте. Если увидите ошибку - создайте issue :)
-Некоторые вещи по GUI просто не успели :(
+Некоторые вещи по GUI просто не успели :(*
