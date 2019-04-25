@@ -69,7 +69,7 @@ public class Competition implements Event {
     public void setWinCash(int winCash) throws IncorrectDataException {
         if (winCash < 0) {
             throw new IncorrectDataException("Negative prize");
-        } else{
+        } else {
             this.winCash = winCash;
         }
     }
@@ -110,13 +110,16 @@ public class Competition implements Event {
 
     @Override
     public boolean equals(Object o) {
-        if (o.getClass() == this.getClass())
-            if (city.equalsIgnoreCase(((Competition) o).city)
+        if (o == this) {
+            return true;
+        }
+        if (o == null || !(o instanceof Competition)) {
+            return false;
+        } else
+            return (city.equalsIgnoreCase(((Competition) o).city)
                     && date.equals(((Competition) o).date)
                     && projectName.equalsIgnoreCase(((Competition) o).projectName)
-                    && winCash == ((Competition) o).winCash)
-                return true;
-        return false;
+                    && winCash == ((Competition) o).winCash);
     }
 
     //toLowerCase нужен для того, чтобы ивенты с по факту одинаковыми городами, но разным регистром написания

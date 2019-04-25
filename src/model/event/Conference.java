@@ -12,11 +12,11 @@ public class Conference implements Event {
     private String articleName;
 
 
-    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY,0);
+    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY, 0);
     private static final String DEFAULT_CITY = "не указано";
-    private static final String DEFAULT_ARTICLE_NAME= "не указана";
+    private static final String DEFAULT_ARTICLE_NAME = "не указана";
 
-    public Conference(){
+    public Conference() {
         this.date = DEFAULT_DATE;
         this.city = DEFAULT_CITY;
         this.articleName = DEFAULT_ARTICLE_NAME;
@@ -30,7 +30,7 @@ public class Conference implements Event {
 
         if (articleName.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of article");
-        } else{
+        } else {
             this.articleName = articleName;
         }
     }
@@ -55,9 +55,9 @@ public class Conference implements Event {
     @Override
     public void setCity(String city) throws IncorrectDataException {
 
-        if (city.trim().isEmpty()){
+        if (city.trim().isEmpty()) {
             throw new IncorrectDataException("Empty name of city");
-        } else{
+        } else {
             this.city = city;
         }
     }
@@ -68,37 +68,42 @@ public class Conference implements Event {
         String noInfo = "Нет информации";
         stringBuilder.append("Название доклада: ");
 
-        if(articleName.equals(DEFAULT_ARTICLE_NAME)) {
+        if (articleName.equals(DEFAULT_ARTICLE_NAME)) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(articleName);
         stringBuilder.append("\n")
                 .append("Город: ");
-        if(city.equals(DEFAULT_CITY)){
+        if (city.equals(DEFAULT_CITY)) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == DEFAULT_DATE){
+        if (date == DEFAULT_DATE) {
             stringBuilder.append(noInfo);
-        }else {
+        } else {
             stringBuilder.append(date);
         }
         return stringBuilder.toString();
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o.getClass() == this.getClass())
-            if(city.equalsIgnoreCase(((Conference) o).city)
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || !(o instanceof Conference)) {
+            return false;
+        } else
+            return (city.equalsIgnoreCase(((Conference) o).city)
                     && date.equals(((Conference) o).date)
-                    && articleName.equalsIgnoreCase(((Conference) o).articleName))
-                return true;
-        return false;
+                    && articleName.equalsIgnoreCase(((Conference) o).articleName));
     }
 
+    //toLowerCase нужен для того, чтобы ивенты с по факту одинаковыми городами, но разным регистром написания
+    //имели один и тот же hashCode, иначе hashCode для city вернет разные результаты
     @Override
     public int hashCode() {
         return 8456318 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^

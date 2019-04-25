@@ -12,11 +12,11 @@ public class Olympiad implements Event {
     private String city;
     private int podiumPlace;
 
-    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY,0);
+    private static final Date DEFAULT_DATE = new Date(0, Calendar.JANUARY, 0);
     private static final String DEFAULT_CITY = "не указано";
     private static final int DEFAULT_PLACE = 0;
 
-    public Olympiad(){
+    public Olympiad() {
         this.date = DEFAULT_DATE;
         this.city = DEFAULT_CITY;
         this.podiumPlace = DEFAULT_PLACE;
@@ -38,7 +38,7 @@ public class Olympiad implements Event {
     }
 
     @Override
-    public void setCity(String city) throws IncorrectDataException{
+    public void setCity(String city) throws IncorrectDataException {
         this.city = city;
 
         if (city.trim().isEmpty())
@@ -49,7 +49,7 @@ public class Olympiad implements Event {
         return podiumPlace;
     }
 
-    public void setPodiumPlace(int podiumPlace) throws IncorrectDataException{
+    public void setPodiumPlace(int podiumPlace) throws IncorrectDataException {
         this.podiumPlace = podiumPlace;
 
         if (podiumPlace < 1)
@@ -66,31 +66,37 @@ public class Olympiad implements Event {
                 .append(podiumPlace)
                 .append("\n")
                 .append("Город: ");
-        if(city == DEFAULT_CITY) {
+        if (city == DEFAULT_CITY) {
             stringBuilder.append(noInfo);
-        }else
+        } else
             stringBuilder.append(city);
 
         stringBuilder.append("\n")
                 .append("Дата: ");
-        if(date == DEFAULT_DATE){
+        if (date == DEFAULT_DATE) {
             stringBuilder.append(noInfo);
-        }else {
+        } else {
             stringBuilder.append(date);
         }
         return stringBuilder.toString();
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o.getClass() == this.getClass())
-            if(city.equalsIgnoreCase(((Olympiad) o).city)
-                    && date.equals(((Olympiad) o).date)
-                    && podiumPlace == ((Olympiad) o).podiumPlace)
-                return true;
-        return false;
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || !(o instanceof Olympiad)) {
+            return false;
+        } else
+            return
+                    (city.equalsIgnoreCase(((Olympiad) o).city)
+                            && date.equals(((Olympiad) o).date)
+                            && podiumPlace == ((Olympiad) o).podiumPlace);
     }
 
+    //toLowerCase нужен для того, чтобы ивенты с по факту одинаковыми городами, но разным регистром написания
+    //имели один и тот же hashCode, иначе hashCode для city вернет разные результаты
     @Override
     public int hashCode() {
         return 3777777 ^ date.hashCode() ^ city.toLowerCase().hashCode() ^ podiumPlace;
