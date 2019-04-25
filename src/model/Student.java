@@ -22,6 +22,7 @@ public class Student implements Activist {
     private final static String STUDENT_NAME_DEFAULT = "noname";
     private final static int STUDENT_ENTERED_YEAR = LocalDateTime.now().getYear();
 
+
     public Student(){
         studentId = STUDENT_ID_DEFAULT;
         year = STUDENT_ENTERED_YEAR;
@@ -68,6 +69,8 @@ public class Student implements Activist {
     public void setFirstName(String firstName) throws IncorrectDataException {
         if (firstName.isEmpty())
             throw new IncorrectDataException("Empty name");
+        if (isStringNumeric(firstName))
+            throw new IncorrectDataException("Incorrect symbols in name!");
 
         this.firstName = firstName;
     }
@@ -75,6 +78,8 @@ public class Student implements Activist {
     public void setLastName(String lastName) throws IncorrectDataException {
         if (lastName.isEmpty())
             throw new IncorrectDataException("Empty surname");
+        if (isStringNumeric(firstName))
+            throw new IncorrectDataException("Incorrect symbols in surname!");
 
         this.lastName = lastName;
     }
@@ -224,6 +229,17 @@ public class Student implements Activist {
         return false;
     }
 
+    private boolean isStringNumeric(String string) {
+        boolean numeric = true;
+        try {
+            Double num = Double.parseDouble(string);
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+
+        return numeric;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder;
@@ -243,7 +259,7 @@ public class Student implements Activist {
                 .append("\n")
                 .append("Ивенты: ");
         if(arrayList.isEmpty()) {
-            stringBuilder.append("-");
+            stringBuilder.append("\t-");
             return stringBuilder.toString();
         }
         stringBuilder.append("\n");

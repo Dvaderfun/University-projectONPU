@@ -75,13 +75,18 @@ public class ContractStudent extends Student {
     public String toString() {
         StringBuilder stringBuilder =  new StringBuilder();
         stringBuilder
-                .append("\n")
                 .append(super.toString())
                 .append("\n")
                 .append("Стоимость обучения за один семестр: ")
                 .append(costEducationSemestr)
                 .append("\n")
                 .append("Список Платежей: \n");
+
+        if(paymentsList.isEmpty()) {
+            stringBuilder.append("\t-");
+            return stringBuilder.toString();
+        }
+
         for (Payment payment : paymentsList) {
             stringBuilder
                     .append(payment.toString())
