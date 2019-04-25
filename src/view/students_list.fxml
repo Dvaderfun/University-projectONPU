@@ -3,13 +3,12 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<VBox prefHeight="554.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GroupController">
+<?import javafx.scene.text.*?>
+<VBox prefHeight="554.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GroupController">
     <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
+      <ToolBar fx:id="toolBar" prefHeight="40.0" prefWidth="200.0">
          <items>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Group #&amp;">
+            <Text fx:id="groupNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Group #&amp;">
                <font>
                   <Font name="Google Sans Regular" size="15.0" />
                </font>
@@ -22,13 +21,25 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
             </Button>
-            <Button fx:id="addPayment" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Payment" />
-            <Button fx:id="sortStudents" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Sort Students" />
-            <Text fx:id="studentsQuantity" strokeType="OUTSIDE" strokeWidth="0.0" text="Students: 15">
+            <Button fx:id="addPayment" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Add Payment">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font></Button>
+            <Button fx:id="sortStudents" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Sort Students">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font></Button>
+            <Text fx:id="studentsQuantity" strokeType="OUTSIDE" strokeWidth="0.0" text="Students: 0">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Google Sans Regular" size="15.0" />
+               </font>
             </Text>
          </children>
          <VBox.margin>
@@ -42,8 +53,14 @@
       </ListView>
         <HBox spacing="20.0" VBox.vgrow="NEVER">
             <children>
-                <Button fx:id="addStudent" ellipsisString="" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Student" HBox.hgrow="ALWAYS" />
-            <Button fx:id="removeStudent" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Student" />
+                <Button fx:id="addStudent" ellipsisString="" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Add Student" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font></Button>
+            <Button fx:id="removeStudent" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="31.0" prefWidth="1216.0" text="Remove Student">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font></Button>
             </children>
             <VBox.margin>
                 <Insets />

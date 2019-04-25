@@ -15,6 +15,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private ModelFacade facade;
+    GroupController groupController;
 
     public static void main(String[] args) {
         launch(args);

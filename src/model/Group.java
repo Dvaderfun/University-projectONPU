@@ -1,10 +1,8 @@
 package model;
 
 
-
 import exception.IncorrectDataException;
 import org.apache.commons.lang3.ArrayUtils;
-
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -55,6 +53,7 @@ public class Group {
 
     public Student[] getStudents() {
         return students;
+
     }
 
     public Student getStudentById(int studentId) throws IncorrectDataException{
@@ -84,7 +83,6 @@ public class Group {
     }
 
     public void addStudent(Student s) {
-
         this.students = ArrayUtils.add(this.students, s);
 
     }

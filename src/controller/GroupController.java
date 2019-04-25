@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ToolBar;
+import javafx.scene.text.Text;
+import model.ModelFacade;
 import model.Student;
 
 import java.net.URL;
@@ -12,6 +15,7 @@ import java.util.ResourceBundle;
 public class GroupController implements Initializable {
     private Main main;
     private int groupId;
+    ModelFacade modelFacade;
 
     @FXML
     private Button addStudent;
@@ -21,6 +25,15 @@ public class GroupController implements Initializable {
 
     @FXML
     private ListView listView;
+
+    //@FXML
+    //private Text groupNumber;
+
+    @FXML
+    private ToolBar toolBar;
+
+    @FXML
+    private Text studentsQuantity;
 
     public void setMain(Main main) {
         this.main = main;
@@ -33,19 +46,35 @@ public class GroupController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addStudent.setOnAction(event -> main.openStudentCard(groupId));
-        removeStudent.setOnAction(event -> main.deleteStudent((Student) listView.getSelectionModel().getSelectedItem(), groupId-1));
+        //Text text = new Text(""+ groupId);
+        //toolBar.getItems().add(groupNumber);
+       // groupNumber.setText(Integer.toString(groupId));
+        updateStudentsNumber();
+
+        addStudent.setOnAction(event -> {
+            main.openStudentCard(groupId);
+        });
+        removeStudent.setOnAction(event -> {
+            main.deleteStudent((Student) listView.getSelectionModel().getSelectedItem(), groupId-1);
+            updateStudentsNumber();
+        });
 
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (listView.getSelectionModel().getSelectedItem() != null) {
                 removeStudent.setDisable(false);
+                updateStudentsNumber();
             } else {
                 removeStudent.setDisable(true);
+                updateStudentsNumber();
             }
         });
     }
 
-    private String getGroupQuantity() {
+    public void updateStudentsNumber(){
+        studentsQuantity.setText(getStudentsQuantity());
+    }
+
+    private String getStudentsQuantity() {
         return "Students: " + listView.getItems().size();
     }
 }
