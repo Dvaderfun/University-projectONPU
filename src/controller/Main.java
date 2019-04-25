@@ -15,14 +15,13 @@ import java.io.IOException;
 public class Main extends Application {
 
     private ModelFacade facade;
-    GroupController groupController;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         facade = new ModelFacade();
     }
 
@@ -40,8 +39,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    /*****************************************************/
-
     public void addGroup(Group e) {
         facade.addGroup(e);
     }
@@ -54,8 +51,6 @@ public class Main extends Application {
         facade.deleteGroup(selectedItem);
     }
 
-
-
     public void addStudent(Student s, int groupId) {
         facade.addStudent(s, groupId);
     }
@@ -67,10 +62,6 @@ public class Main extends Application {
     public void bindStudents(ListView o) {
         facade.bindStudents(o);
     }
-
-
-
-
 
     public void openGroup(int groupId) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/students_list.fxml"));

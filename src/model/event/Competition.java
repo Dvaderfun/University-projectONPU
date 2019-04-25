@@ -30,7 +30,6 @@ public class Competition implements Event {
 
     @Override
     public void setDate(Date date) {
-        //Date уже подразумевает проверку на некорректные данные, тест не нужен
         this.date = date;
     }
 

@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ToolBar;
 import javafx.scene.text.Text;
-import model.ModelFacade;
 import model.Student;
 
 import java.net.URL;
@@ -15,7 +13,6 @@ import java.util.ResourceBundle;
 public class GroupController implements Initializable {
     private Main main;
     private int groupId;
-    ModelFacade modelFacade;
 
     @FXML
     private Button addStudent;
@@ -29,8 +26,8 @@ public class GroupController implements Initializable {
     //@FXML
     //private Text groupNumber;
 
-    @FXML
-    private ToolBar toolBar;
+    //@FXML
+    //private ToolBar toolBar;
 
     @FXML
     private Text studentsQuantity;
@@ -47,8 +44,8 @@ public class GroupController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Text text = new Text(""+ groupId);
-        //toolBar.getItems().add(groupNumber);
-       // groupNumber.setText(Integer.toString(groupId));
+        // toolBar.getItems().add(groupNumber);
+        // groupNumber.setText(Integer.toString(groupId));
         updateStudentsNumber();
 
         addStudent.setOnAction(event -> {

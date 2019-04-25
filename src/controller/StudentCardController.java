@@ -1,8 +1,6 @@
 package controller;
 
 import exception.IncorrectDataException;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,7 +9,6 @@ import model.ContractStudent;
 import model.Student;
 
 import java.net.URL;
-import java.time.chrono.Chronology;
 import java.util.ResourceBundle;
 
 public class StudentCardController implements Initializable {
@@ -66,7 +63,7 @@ public class StudentCardController implements Initializable {
 
         saveStudent.setOnAction(event -> {
             if (firstName.getText().isEmpty() || lastName.getText().isEmpty() || studentId.getText().isEmpty() || (student instanceof ContractStudent && semesterCost.getText().isEmpty())) {
-                showMessage();
+                showMessage("All fields are required", "Fill in all the fields!");
             } else {
                 try {
                     student.setFirstName(firstName.getText());
@@ -80,10 +77,13 @@ public class StudentCardController implements Initializable {
                     closeWindow();
                 } catch (IncorrectDataException e) {
                     showMessage(e);
+                    e.printStackTrace();
                 } catch (NumberFormatException e){
-                    showMessage(e);
+                    showMessage("Error", e.getMessage());
+                    e.printStackTrace();
                 } catch (NullPointerException  e){
-                    showMessage(e);
+                    showMessage("Year field is empty", "Choose year");
+                    e.printStackTrace();
                 }
             }
         });
@@ -92,35 +92,18 @@ public class StudentCardController implements Initializable {
 
     public void showMessage(IncorrectDataException e){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ХУЙНЯ");
-        alert.setHeaderText("Не сохранено");
+        alert.setTitle("Incorrect data");
+        alert.setHeaderText("Not saved");
         alert.setContentText(e.getMessage());
 
         alert.show();
     }
 
-    public void showMessage(NumberFormatException e){
+    public void showMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ХУЙНЯ");
-        alert.setHeaderText("Не сохранено");
-        alert.setContentText(e.getMessage());
-
-        alert.show();
-    }
-
-    public void showMessage(){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ХУЙНЯ");
-        alert.setHeaderText("Не сохранено");
-        alert.setContentText("Заполните все поля!");
-        alert.show();
-    }
-
-    public void showMessage(NullPointerException e){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ХУЙНЯ");
-        alert.setHeaderText("Не сохранено");
-        alert.setContentText("Choose year");
+        alert.setTitle(title);
+        alert.setHeaderText("Not saved");
+        alert.setContentText(message);
         alert.show();
     }
     public static void addTextLimiter(final TextField tf, final int maxLength) {

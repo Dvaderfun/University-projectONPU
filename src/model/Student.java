@@ -129,7 +129,7 @@ public class Student implements Activist {
         return i;
     }
 
-    //возвращающий число докладов на конференциях
+
     @Override
     public int getReportsNumber() {
         int i = 0;
@@ -145,8 +145,7 @@ public class Student implements Activist {
         }
         return i;
     }
-    //строка состоит из названий проектов,
-    //за которые студент получил вознаграждение на соревнованиях.
+
     @Override
     public String getNameProjects() {
         StringBuilder stringBuilder;
